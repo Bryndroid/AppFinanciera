@@ -77,9 +77,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class ="btn-contenedor">
+                        <button id = "generarPDFBtn" (click) = "crearPDF()">
+                            GenerarPDF
+                        </button>
+                    </div>
                 </section>
                 <div class="modal-content-main">
-                    <div class="modal-table">
+                    <div #tablaAmortizacionRef  class="modal-table">
                         <table>
                         <thead id = "theadPositionFixed">
                             <tr id = "modalheaderBody">
@@ -131,11 +136,5 @@
             </section>
         }
        
-    </section>
-    <span>Comparador ecónomico</span>
-    <section id = "Comparador">
-        <div class = "contenedor-grafica-economico">
-            <canvas id = "miCanvita"></canvas>
-        </div>
     </section>
 </section>

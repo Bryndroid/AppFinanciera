@@ -1,8 +1,10 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Chart, registerables } from 'chart.js'
 import { chartCreate } from '../../4.0_services/crearChart.service';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 Chart.register(...registerables);
 @Component({
   selector: 'app-ahorro-inteligente',
@@ -21,6 +23,7 @@ export class AhorroInteligente implements OnInit, AfterViewInit{
   public anio: any;
   public mes: any;
   radarChart!: Chart;
+  @ViewChild('tablaAmortizacionRef') tablaAmortizacionRef!: ElementRef;
  public tablaAmortizacion: {
     ano: number;
     meses: {
@@ -159,7 +162,25 @@ export class AhorroInteligente implements OnInit, AfterViewInit{
     this.totalPagar = (totalPagarDecimales).toFixed(2);
     this.totalInteres = (totalPagarDecimales - montoForm).toFixed(2);
   }
+  crearPDF() {
+    const doc = new jsPDF();
 
+    // Selecciona la tabla directamente del DOM
+    const tabla = this.tablaAmortizacionRef.nativeElement.querySelector('table');
+
+    if (tabla) {
+      (autoTable as any)(doc, {
+        html: tabla,
+        startY: 20,
+        headStyles: { fillColor: [41, 128, 185] },
+        theme: 'grid'
+      });
+
+      doc.save('tabla_amortizacion.pdf');
+    } else {
+      console.error(' No se encontró la tabla para generar el PDF');
+    }
+  }
   //Para la tabla
 
   AEETabla(cuota: number, saldo: number){

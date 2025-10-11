@@ -30,24 +30,8 @@ export class datosService{
     "comisiones_cobradas": 3.62
   },
   "transacciones": [
-    {
-      "fecha": "2025-09-02",
-      "descripcion": "Depósito Ahorros - Agencia",
-      "tipo": "CRÉDITO",
-      "monto": 500.00,
-      "balance": 1750.00,
-      "referencia": "DEP-20250902-001",
-      "canal": "AGENCIA"
-    },
-    {
-      "fecha": "2025-09-04",
-      "descripcion": "Retiro Cajero ATM",
-      "tipo": "DÉBITO",
-      "monto": 100.00,
-      "balance": 1650.00,
-      "referencia": "ATM-0904-78A",
-      "canal": "CAJERO"
-    },
+   
+    
     {
       "fecha": "2025-09-06",
       "descripcion": "Pago Servicio - ELEKTRA S.A.",
@@ -147,15 +131,7 @@ export class datosService{
       "referencia": "TRF-OUT-20250925-667",
       "canal": "TRANSFERENCIA"
     },
-    {
-      "fecha": "2025-09-26",
-      "descripcion": "Depósito caja - efectivo",
-      "tipo": "CRÉDITO",
-      "monto": 150.00,
-      "balance": 2062.26,
-      "referencia": "CAJ-20250926-19",
-      "canal": "AGENCIA"
-    },
+   
     {
       "fecha": "2025-09-27",
       "descripcion": "Retiro Cajero ATM",
@@ -195,124 +171,7 @@ export class datosService{
   ],
   "notas": "Este estado de cuenta es un ejemplo generado como placeholder. Los montos, nombres y referencias son ficticios y sólo con fines demostrativos."
 };
-    private placeholderEstadoCredito = {
-  "banco": "Finanzas Global S.A.",
-  "statement_id": "CC-202509-774a91",
-  "titular": "Cliente Anónimo",
-  "numero_tarjeta": "**** **** **** 4321",
-  "tipo_cuenta": "Tarjeta de Crédito Clásica",
-  "moneda": "USD",
-  "periodo": {
-    "desde": "2025-09-01",
-    "hasta": "2025-09-30"
-  },
-  "fecha_corte": "2025-09-30",
-  "fecha_pago": "2025-10-15",
-  "limite_credito": 2000.00,
-  "saldo_anterior": 875.25,
-  "pagos_recibidos": 400.00,
-  "compras_del_mes": 650.40,
-  "intereses": 15.35,
-  "comisiones": 5.00,
-  "saldo_actual": 1145.00,
-  "saldo_disponible": 855.00,
-  "pago_minimo": 57.25,
-  "pago_total": 1145.00,
-  "totales": {
-    "total_cargos": 670.75,
-    "total_abonos": 400.00,
-    "numero_transacciones": 9
-  },
-  "transacciones": [
-    {
-      "fecha": "2025-09-02",
-      "descripcion": "Pago recibido - Gracias",
-      "tipo": "abono",
-      "monto": 400.00,
-      "referencia": "PAY-0902-0001",
-      "balance": 475.25,
-      "categoria": "Pago"
-    },
-    {
-      "fecha": "2025-09-03",
-      "descripcion": "Supermercado El Ahorro",
-      "tipo": "cargo",
-      "monto": 120.50,
-      "referencia": "POS-0903-199",
-      "balance": 595.75,
-      "categoria": "Compras"
-    },
-    {
-      "fecha": "2025-09-06",
-      "descripcion": "Restaurante El Patio",
-      "tipo": "cargo",
-      "monto": 34.80,
-      "referencia": "POS-0906-512",
-      "balance": 630.55,
-      "categoria": "Restaurantes"
-    },
-    {
-      "fecha": "2025-09-10",
-      "descripcion": "Suscripción Spotify Premium",
-      "tipo": "cargo",
-      "monto": 10.99,
-      "referencia": "SUB-0910-888",
-      "balance": 641.54,
-      "categoria": "Entretenimiento"
-    },
-    {
-      "fecha": "2025-09-12",
-      "descripcion": "Compra en Amazon",
-      "tipo": "cargo",
-      "monto": 199.90,
-      "referencia": "ECOM-0912-220",
-      "balance": 841.44,
-      "categoria": "Compras en línea"
-    },
-    {
-      "fecha": "2025-09-18",
-      "descripcion": "Farmacia Central",
-      "tipo": "cargo",
-      "monto": 22.75,
-      "referencia": "POS-0918-440",
-      "balance": 864.19,
-      "categoria": "Salud"
-    },
-    {
-      "fecha": "2025-09-22",
-      "descripcion": "Gasolinera PetroMax",
-      "tipo": "cargo",
-      "monto": 85.00,
-      "referencia": "POS-0922-553",
-      "balance": 949.19,
-      "categoria": "Transporte"
-    },
-    {
-      "fecha": "2025-09-28",
-      "descripcion": "Intereses del período",
-      "tipo": "cargo",
-      "monto": 15.35,
-      "referencia": "INT-0928",
-      "balance": 964.54,
-      "categoria": "Finanzas"
-    },
-    {
-      "fecha": "2025-09-30",
-      "descripcion": "Comisión por mantenimiento",
-      "tipo": "cargo",
-      "monto": 5.00,
-      "referencia": "FEE-0930",
-      "balance": 969.54,
-      "categoria": "Comisiones"
-    }
-  ],
-  "mensajes": [
-    "Su pago mínimo vence el 15 de octubre de 2025.",
-    "Evite cargos por mora pagando al menos el monto mínimo antes de la fecha límite.",
-    "Gracias por preferir nuestros servicios."
-  ],
-  "notas": "Estado de cuenta simulado para fines de demostración. Todos los datos son ficticios."
-    }
+    
     constructor(){
 
     }

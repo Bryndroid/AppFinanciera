@@ -211,3 +211,26 @@ td {
   background-color: #3a463d91;
   border-radius: 10px;
 }
+
+.btn-contenedor{
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#generarPDFBtn{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 4px solid black;
+  background: #02771fec;
+  color: aliceblue;
+  font-weight: bold;
+  font-size: 18px;
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+}
