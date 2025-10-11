@@ -1,0 +1,213 @@
+#ahorro-content{
+    width: 100%;
+    max-width: 100%;
+    height: 90vh;
+    padding: 25px;
+    overflow: auto;
+}
+#ahorro-content span{
+    font-weight: bold;
+    font-size: 32px;
+    color: aliceblue;
+}
+#contenedor-calculadora-prestamo{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+#calculadora-contenedor{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    padding-top: 50px;
+}
+#main-calculadora{
+    border-radius:10px ;
+    width: fit-content;
+    padding: 25px;
+    background-color: #0f4204e5;
+     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.425), 0 2px 6px rgba(0, 0, 0, 0.452);
+}
+.calculadora-title h3{
+    color: aliceblue;
+    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+.calculadora-title, .header-title{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+form label{
+    font-size: 18px;
+    color: aliceblue;
+}
+form input, select{
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background: #f0f4fa;
+  font-size: 16px;
+
+}
+.form-button{
+    padding-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.form-button button{
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #1a1a1a;
+  background: linear-gradient(135deg, #38E07B, #ffea70);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+button:hover {
+  background: linear-gradient(135deg, #ffea70, #FFD100);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+button:active {
+  transform: translateY(0px) scale(0.97);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#main-content-results{
+    border-radius:10px ;
+    width:30vw;
+    padding: 25px;
+    background-color: #0f4204e5;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.425), 0 2px 6px rgba(0, 0, 0, 0.452);
+    color: rgb(255, 255, 255);
+    height: fit-content;
+
+}
+.main-header-title h4{
+    font-size:35px;
+    margin-bottom: 10px;
+}
+
+.main-results{
+    padding: 5px;
+    margin-top: 20px;
+}
+.main-card-result{
+    display: flex;
+    gap:20px;
+    flex-direction: column;   
+}
+.main-card-text{
+    background-color: rgb(255, 255, 255);
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+}
+.main-card-text h5{
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+.main-card-text span{
+    color: #05a746 !important;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.main-content-table {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+}
+
+.modal-content-main{
+    max-width: 50%;
+    max-height: 76vh;
+    overflow: auto;
+    position: relative;
+}
+
+caption {
+  padding: 12px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  background: #0060f0e5;
+  color: #fff;
+}
+
+tbody tr:nth-child(even) {
+  background: #38E07B;
+}
+tbody tr:nth-child(odd) {
+  background: #012209e5;
+  color: #fff;
+}
+#main-content-results-table{
+  width: 100%;
+  
+}
+.modal-table{
+  position: relative;
+}
+
+table{
+  width: 100%;
+  overflow: scroll;
+  position: relative;
+}
+td {
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid #001103;
+}
+#modalheaderBody th{
+    font-size: 24px;
+    font-weight: bold;
+    color: aliceblue;
+    background-color: rgb(5, 22, 5);
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.row-header th{
+    padding: 10px;
+    color: aliceblue;
+    font-weight: bold;
+    background-color: rgb(2, 119, 2);
+}
+
+/*--------grafica-------*/
+#Comparador{
+  width: 50%;
+  background-color: #3a463d91;
+  border-radius: 10px;
+}

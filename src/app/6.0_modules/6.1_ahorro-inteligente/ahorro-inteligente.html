@@ -1,0 +1,141 @@
+
+<section id = "ahorro-content">
+    <span>Calculadora de Prestamos</span>
+    <section id = "calculadora-contenedor">
+        @if(banderaPrestamo == false){
+            <section id = "main-calculadora">
+                <div class = "calculadora-title">
+                    <div class = "calculadora-logo">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+                    <h3>Ingresa los datos</h3>
+                </div>
+                <form id = "formulario" [formGroup]="formulario" (ngSubmit)="calcular()">
+                    <label for = "txtPrestamo">Monto del préstamo ($)</label>
+                    <input type = "number" id = "txtPrestamo" formControlName ="Prestamo" required placeholder="Ej: $20,000">
+                    <label for = "txtTasa">Tasa de interés anual (%)</label>
+                    <select id = "txtTasa" formControlName = "Tasa">
+                        <option value = "0.10" selected>
+                            10
+                        </option>
+                         <option value = "0.15">
+                            15
+                        </option>
+                         <option value = "0.20">
+                            20
+                        </option>
+                        <option value = "0.25">
+                            25
+                        </option>
+                        <option value = "0.30">
+                            30
+                       </option>
+                       <!--Agregar una opción que me haga que pueda digitar una tasa custom-->
+                    </select>
+                    <label for = "txtPlazo">Plazo (años)</label>
+                    <input type = "number"  id = "txtPlazo" min = 0 max = 50 
+                    placeholder="Min: 0, Max: 50 años" required formControlName = "Plazo">
+                    <div class = "form-button">
+                        <button class ="buttonCalcular" type = "submit">
+                           Calcular 
+                        </button>
+                          <button class = "buttonBorrar">
+                            Borrar
+                        </button>
+                    </div>
+
+                </form>
+            </section>
+        }@else{
+            <section id = "contenedor-calculadora-prestamo">
+                <section id = "main-content-results" >
+                    <div class = "main-header-title">
+                        <div class = "main-imagen">
+                        </div>
+                        <h4>Resultados</h4>
+                    </div>
+                    <hr>
+                    <div class ="main-results">
+                        <div class ="main-card-result">
+                            <div class ="main-card-text">
+                                <h5>Pago Mensual</h5>
+                                <span id ="inputPago">
+                                    ${{cuotaMensual}}
+                                </span>
+                            </div>
+                            <div class ="main-card-text">
+                                <h5>Total Intereses</h5>
+                                <span id ="inputInteres">
+                                    ${{totalInteres}}
+                                </span>
+                            </div>
+                            <div class ="main-card-text">
+                                <h5>Total a pagar </h5>
+                                <span id ="inputTotal">
+                                    ${{totalPagar}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="modal-content-main">
+                    <div class="modal-table">
+                        <table>
+                        <thead id = "theadPositionFixed">
+                            <tr id = "modalheaderBody">
+                                <th colspan="6">Tabla de Amortización</th>
+                                </tr>
+                                <tr class="row-header">
+                                <th>Años</th>
+                                <th>Meses</th>
+                                <th>Cuota</th>
+                                <th>Intereses</th>
+                                <th>Pago Capital</th>
+                                <th>Saldo Total</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <ng-container>
+                                @for(anio of tablaAmortizacion; track $index){
+                                    <tr>
+                                        <td rowspan="12"> Año {{anio.ano}}</td>
+                                        <td>Mes {{ anio.meses[0].mes }}</td>
+                                        <td>${{ anio.meses[0].cuota }}</td>
+                                        <td>${{ anio.meses[0].intereses  }}</td>
+                                        <td>${{ anio.meses[0].PagoCapital  }}</td>
+                                        <td>
+                                        ${{anio.meses[0].SaldoTotal <= 2 ? '0.00' : (anio.meses[0].SaldoTotal) }}
+                                        </td>
+                                    </tr>
+                                    @for(mes of anio.meses; track $index){
+                                    @if($index !=0){
+                                            <tr>
+                                                <td>Mes {{ mes.mes }}</td>
+                                                <td>${{ mes.cuota }}</td>
+                                                <td>${{ mes.intereses  }}</td>
+                                                <td>${{ mes.PagoCapital  }}</td>
+                                                <td>
+                                                ${{ mes.SaldoTotal <= 2 ? '0.00' : (mes.SaldoTotal) }}
+                                                </td>
+                                            </tr>
+                                    }
+                                        
+                                    }
+                                }
+                            </ng-container>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        }
+       
+    </section>
+    <span>Comparador ecónomico</span>
+    <section id = "Comparador">
+        <div class = "contenedor-grafica-economico">
+            <canvas id = "miCanvita"></canvas>
+        </div>
+    </section>
+</section>

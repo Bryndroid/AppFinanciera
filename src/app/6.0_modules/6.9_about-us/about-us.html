@@ -1,0 +1,334 @@
+
+<section id = "main-content">
+    <section id = "main-content-header">
+        <div class = "main-header-text">
+            <h2>La medicina para tu cartera</h2>
+            <div class = "text-small">
+                <p>Toma el control de tus finanzas con nuestra aplicación intuitiva y segura. Gestiona tus cuentas, transacciones y presupuestos en un solo lugar.</p>
+            </div>
+        </div>
+        <div class = "main-content-buttons">
+            <button class = "buttons-ej1"  (click)="navegarLogin()">
+                Comenzar ahora
+            </button>
+            <button class = "buttons-ej2">
+                Ver características
+            </button>
+        </div>
+    </section>
+
+    <section id = "main-content-cluster">
+        <div class  ="main-cluster1">
+            <article>
+                <div class = "img-cluster">
+                    <i-lucide name="wallet-minimal" [size]="48" ></i-lucide>
+                </div>
+                <div class = "cluster-text">
+                    <h5>Gestión de Cuentas</h5>
+                    <p>Vincula todas tus cuentas bancarias en un solo lugar para una visión completa de tus finanzas.</p>
+                </div>
+            </article>
+        </div>
+
+        <div class  ="main-cluster1">
+            <article>
+                <div class = "img-cluster">
+                    <i-lucide name="book-open-check" [size]="48" ></i-lucide>
+                </div>
+                <div class = "cluster-text">
+                    <h5>Aprendizaje amplio y detallado</h5>
+                    <p>Aprende conceptos importantes sobre trading, inversiones a corto y largo plazo, conceptos claves del dinero en el tiempo y mucho más con nuestra plataforma financiera educativa</p>
+                </div>
+            </article>
+        </div>
+        <div class  ="main-cluster1">
+            <article>
+                <div class = "img-cluster">
+                    <i-lucide name="chart-line" [size]="48" ></i-lucide>
+                </div>
+                <div class = "cluster-text">
+                    <h5>Analisis Inteligente</h5>
+                    <p>Obtén informes y análisis detallados para tomar mejores decisiones financieras.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id = "main-content-descript">
+        <section id = "main-content-card">
+            <div class = "card-content-text">
+                <h5>Gestiona tu dinero con nosotros</h5> <br>
+                <p>Accede a todas tus cuentas desde un solo lugar, controla tus gastos en tiempo real y recibe análisis inteligentes que te ayudarán a tomar mejores decisiones financieras.</p>
+               <div class = "options-container">
+                    <div class = "card-options">
+                        <div class = "card-icon">
+                            <i-lucide name="vote" [size]="28" ></i-lucide>
+                        </div>
+                        <div class = "text">
+                            <p>Seguridad avanzada</p>
+                        </div>
+                    </div>
+                    <div class = "card-options">
+                        <div class = "card-icon">
+                            <i-lucide name="chart-pie" [size]="28" ></i-lucide>
+                        </div>
+                        <div class = "text">
+                            <p>Analisis profesional</p>
+                        </div>
+                    </div>
+                    <div class = "card-options">
+                        <div class = "card-icon">
+                            <i-lucide name="box" [size]="28" ></i-lucide>
+                        </div>
+                        <div class = "text">
+                            <p>Métricas avanzada</p>
+                        </div>
+                    </div>
+               </div>
+            </div>
+            <div class ="card-content-image2">
+                <div class = "card-image2">
+                    <!--Imagen demostrativa de la vaina-->
+                    <img src = "cartera-image.png">
+                </div>
+            </div>
+        </section>
+        <section id = "main-content-card">
+            <div class = "card-content-text">
+                <h5>Controla tus inversiones</h5> <br>
+                <p>Gestiona tu portafolio de inversiones desde un solo lugar. Monitorea tus activos en tiempo real, analiza rendimientos y toma decisiones estratégicas basadas en información clara y confiable. Con nuestras herramientas, mantener tus finanzas bajo control nunca ha sido tan fácil y seguro.</p>
+               <div class = "options-container">
+                    <div class = "card-options">
+                        <div class = "card-icon">
+                            <i-lucide name="clock-fading" [size]="28" ></i-lucide>
+                        </div>
+                        <div class = "text">
+                            <p>Analisis del mercado 24/7</p>
+                        </div>
+                    </div>
+                    <div class = "card-options">
+                        <div class = "card-icon">
+                            <i-lucide name="hand-coins" [size]="28" ></i-lucide>
+                        </div>
+                        <div class = "text">
+                            <p>Herramientas de control de activos</p>
+                        </div>
+                    </div>
+                    <div class = "card-options">
+                        <div class = "card-icon">
+                            <i-lucide name="bell-ring" [size]="28" ></i-lucide>
+                        </div>
+                        <div class = "text">
+                            <p>Recordatorios Financieros</p>
+                        </div>
+                    </div>
+               </div>
+            </div>
+            <div class ="card-content-image">
+                <div class = "card-image">
+                    <!--Imagen demostrativa de la vaina-->
+                    <canvas id="miChart"></canvas>
+                </div>
+            </div>
+        </section>
+    </section>
+    <section  id = "main-content-educativo">
+        <section id  = "educativo-title">
+            <h4>Aprende a controlar tu dinero</h4>
+            <div class = "text-p">
+                <p>Con nuestros perfiles académicos capacitados y acreditados por nosotros, y nuestra plataforma educativa aprenderas desde conceptos clave hasta tips profesionales de como hacer trabajar el dinero para ti</p>
+            </div>
+        </section>
+        <section id = "educativo-cards-content">
+            <div class = "carta-profesor">
+                <div class ="carta-ovalo">
+                </div>
+                <!--Position absolute-->
+                <div class = "image-carta">
+                    <img src = "usuario-1.png">
+                </div>
+                <div class = "carta-text-content">
+                    <div class = "carta-text-title">
+                        <p>KarkerkarKurkur</p>
+                        <span>Ing. Sistemas</span>
+                    </div>
+                    <div class = "carta-text-descripcion">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda cupiditate, quaerat itaque recusandae aspernatur nihil</p>
+                    </div>
+                </div>
+                <button class = "buttons-ej1">
+                    Aprender con KarkerkarKurkur
+                </button>
+            </div>
+             <div class = "carta-profesor">
+                <div class ="carta-ovalo">
+                </div>
+                <!--Position absolute-->
+                <div class = "image-carta">
+                    <img src = "usuario-1.png">
+                </div>
+                <div class = "carta-text-content">
+                    <div class = "carta-text-title">
+                        <p>KarkerkarKurkur</p>
+                        <span>Ing. Sistemas</span>
+                    </div>
+                    <div class = "carta-text-descripcion">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda cupiditate, quaerat itaque recusandae aspernatur nihil</p>
+                    </div>
+                </div>
+                <button class = "buttons-ej1">
+                    Aprender con KarkerkarKurkur
+                </button>
+            </div>
+             <div class = "carta-profesor">
+                <div class ="carta-ovalo">
+                </div>
+                <!--Position absolute-->
+                <div class = "image-carta">
+                    <img src = "usuario-1.png">
+                </div>
+                <div class = "carta-text-content">
+                    <div class = "carta-text-title">
+                        <p>KarkerkarKurkur</p>
+                        <span>Ing. Sistemas</span>
+                    </div>
+                    <div class = "carta-text-descripcion">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda cupiditate, quaerat itaque recusandae aspernatur nihil</p>
+                    </div>
+                </div>
+                <button class = "buttons-ej1">
+                    Aprender con KarkerkarKurkur
+                </button>
+            </div>
+             <div class = "carta-profesor">
+                <div class ="carta-ovalo">
+                </div>
+                <!--Position absolute-->
+                <div class = "image-carta">
+                    <img src = "usuario-1.png">
+                </div>
+                <div class = "carta-text-content">
+                    <div class = "carta-text-title">
+                        <p>KarkerkarKurkur</p>
+                        <span>Ing. Sistemas</span>
+                    </div>
+                    <div class = "carta-text-descripcion">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda cupiditate, quaerat itaque recusandae aspernatur nihil</p>
+                    </div>
+                </div>
+                <button class = "buttons-ej1">
+                    Aprender con KarkerkarKurkur
+                </button>
+            </div>
+            <div class = "carta-profesor">
+                <div class ="carta-ovalo">
+                </div>
+                <!--Position absolute-->
+                <div class = "image-carta">
+                    <img src = "usuario-1.png">
+                </div>
+                <div class = "carta-text-content">
+                    <div class = "carta-text-title">
+                        <p>KarkerkarKurkur</p>
+                        <span>Ing. Sistemas</span>
+                    </div>
+                    <div class = "carta-text-descripcion">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda cupiditate, quaerat itaque recusandae aspernatur nihil</p>
+                    </div>
+                </div>
+                <button class = "buttons-ej1">
+                    Aprender con KarkerkarKurkur
+                </button>
+            </div>
+            <div class = "carta-profesor">
+                <div class ="carta-ovalo">
+                </div>
+                <!--Position absolute-->
+                <div class = "image-carta">
+                    <img src = "usuario-1.png">
+                </div>
+                <div class = "carta-text-content">
+                    <div class = "carta-text-title">
+                        <p>KarkerkarKurkur</p>
+                        <span>Ing. Sistemas</span>
+                    </div>
+                    <div class = "carta-text-descripcion">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda cupiditate, quaerat itaque recusandae aspernatur nihil</p>
+                    </div>
+                </div>
+                <button class = "buttons-ej1">
+                    Aprender con KarkerkarKurkur
+                </button>
+            </div>
+            <div class = "carta-profesor">
+                <div class ="carta-ovalo">
+                </div>
+                <!--Position absolute-->
+                <div class = "image-carta">
+                    <img src = "usuario-1.png">
+                </div>
+                <div class = "carta-text-content">
+                    <div class = "carta-text-title">
+                        <p>KarkerkarKurkur</p>
+                        <span>Ing. Sistemas</span>
+                    </div>
+                    <div class = "carta-text-descripcion">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda cupiditate, quaerat itaque recusandae aspernatur nihil</p>
+                    </div>
+                </div>
+                <button class = "buttons-ej1">
+                    Aprender con KarkerkarKurkur
+                </button>
+            </div>
+          
+    </section>
+    <section id = "actualizar-content">
+        <h4>Invierte en tu futuro: Elige tu plan Ideal</h4>
+        <small>Comienza gratis o desbloquea todo el <strong>potencial</strong> con nuestro plan <strong>Pro</strong>. La mejor inversión es en tu futuro</small>
+        <section id = "actualizar-cartas">
+            <div class = "carta-subs">
+                <div class = "carta-title-subs">
+                    <h5>Gratis</h5>
+                    <span>Para empezar cambiando tu vida con pequeños pasos</span>
+                </div>
+                <div class ="carta-pago-subs">
+                    <p>$0<small>/mes</small></p>
+                </div>
+                <div class = "carta-carac-subs">
+                    <ul>
+                        <li><i-lucide name="badge-check" [size]="28" ></i-lucide>Acceso a cursos básicos</li>
+                        <li><i-lucide name="badge-check" [size]="28" ></i-lucide>Herramientas de presupuesto</li>
+                        <li><i-lucide name="badge-check" [size]="28" ></i-lucide>Analisis de ingresos-gastos básico</li>
+                    </ul>
+                </div>
+                <div class = "carta-button-subs">
+                    <button id = "btnej2">Comenzar Gratis</button>
+                </div>
+            </div>
+            <div class = "carta-subs-pro">
+                <!--POSITION ABSOLUTE MÁS POPULAR-->
+                <div class = "carta-title-subs-pro">
+                    <h5>Pro</h5>
+                    <span>Para diferenciarte en el mercado y ser el dueño de tu futuro</span>
+                </div>
+                <div class ="carta-pago-subs-pro">
+                    <p>$20<small>/mes</small></p>
+                </div>
+                <div class = "carta-carac-subs-pro">
+                    <ul>
+                        <li><i-lucide name="badge-check" [size]="28" ></i-lucide>Acceso gratis y exclusivo a la mayoría de cursos</li>
+                        <li><i-lucide name="badge-check" [size]="28" ></i-lucide>Herramientas completas</li>
+                        <li><i-lucide name="badge-check" [size]="28" ></i-lucide>Analisis financiero completo</li>
+                        <li><i-lucide name="badge-check" [size]="28" ></i-lucide>Control de Finanzas</li>
+                        <li><i-lucide name="badge-check" [size]="28" ></i-lucide>Accesso a comunicación con docentes</li>
+                        <li><i-lucide name="badge-check" [size]="28" ></i-lucide>Simulador de inversiones</li>
+                        <li><i-lucide name="badge-check" [size]="28" ></i-lucide>Metas y logros dentro de la aplicación con recompensas</li>
+                    </ul>
+                </div>
+                <div class = "carta-button-subs-pro">
+                    <button id = "btnej2-pro">Comenzar con Pro</button>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>

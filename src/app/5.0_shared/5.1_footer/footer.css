@@ -1,0 +1,14 @@
+#footer-content, #footer-content-text{
+    width: 100%;
+    padding: 15px;
+    background-color: #041a0b;
+    color: rgb(189, 189, 189);
+}
+#footer-content-text{
+    display: flex;
+    justify-content: space-around;
+}
+.small-private{
+    display: flex;
+    gap: 20px;
+}

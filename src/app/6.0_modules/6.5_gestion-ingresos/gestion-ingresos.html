@@ -1,0 +1,222 @@
+ 
+<section id  ="gestion-content-cuenta">
+    <section id = "gestion-content-title">
+            <h5>Cuenta Nombre</h5>
+            <hr>
+    </section>
+   
+        <section id = "gestion-content-informacion">
+         <mat-tab-group>
+                @if(banderaCuentaTiene == true){
+                <mat-tab label="Información de cuenta"> 
+                   <section class="gestion-info-cuenta">
+                        <div class ="gestion-info">
+                            <p><strong>Banco:</strong> Banco Ejemplo S.A.</p>
+                            <p><strong>Titular:</strong> Cliente Anónimo</p>
+                            <p><strong>Número de cuenta:</strong> ****5678</p>
+                            <p><strong>Tipo de cuenta:</strong> Cuenta corriente</p>
+                            <p><strong>Moneda:</strong> USD</p>
+                            <p><strong>Periodo:</strong> 2025-09-01 a 2025-09-30</p>
+                            <p><strong>Saldo de apertura:</strong> $1250.00</p>
+                            <p><strong>Saldo de cierre:</strong> $1023.85</p>
+                        </div>
+
+                        <div class ="gestion-transacciones">
+                            <h3>Totales del Mes</h3>
+                            <p><strong>Total acreditado:</strong> $1526.23</p>
+                            <p><strong>Total debitado:</strong> $1752.38</p>
+                            <p><strong>Número de transacciones:</strong> 15</p>
+                        </div>
+                    </section>
+                </mat-tab>
+                }
+                <mat-tab label="Transacciones Información"> 
+                    <section class="gestion-table-content">
+                        <table mat-table [dataSource]="placeholderTransacciones" class="mat-elevation-z2" style="width:100%;">
+
+                        
+                            <ng-container matColumnDef="fecha">
+                            <th mat-header-cell *matHeaderCellDef>Fecha</th>
+                            <td mat-cell *matCellDef="let t">{{ t.fecha }}</td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="descripcion">
+                            <th mat-header-cell *matHeaderCellDef>Descripción</th>
+                            <td mat-cell *matCellDef="let t">{{ t.descripcion }}</td>
+                            </ng-container>
+
+
+                            <ng-container matColumnDef="tipo">
+                            <th mat-header-cell *matHeaderCellDef>Tipo</th>
+                            <td mat-cell *matCellDef="let t">
+                                <span>
+                                {{ t.tipo }}
+                                </span>
+                            </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="monto">
+                            <th mat-header-cell *matHeaderCellDef>Monto</th>
+                            <td mat-cell *matCellDef="let t">${{ t.monto }}</td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="balance">
+                            <th mat-header-cell *matHeaderCellDef>Balance</th>
+                            <td mat-cell *matCellDef="let t">${{ t.balance }}</td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="canal">
+                            <th mat-header-cell *matHeaderCellDef>Canal</th>
+                            <td mat-cell *matCellDef="let t">{{ t.canal}}</td>
+                            </ng-container>
+                            
+                            <ng-container matColumnDef="referencia">
+                            <th mat-header-cell *matHeaderCellDef>Referencia</th>
+                            <td mat-cell *matCellDef="let t">{{ t.referencia }}</td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="['fecha','descripcion','tipo','monto','balance','canal', 'referencia']"></tr>
+                            <tr mat-row *matRowDef="let row; columns: ['fecha','descripcion','tipo','monto','balance','canal', 'referencia'];"></tr>
+                        </table>
+                        </section>
+                </mat-tab>
+        </mat-tab-group>
+    </section>
+
+    <!--Que se muestre de último-->
+    <section id = "gestion-cuenta-contenedor">
+        <div class = "gestion-grafica-costos">
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title> Transacciones</mat-panel-title>
+                        <mat-panel-description> Resumen descriptivos </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <h6>Transacciones: </h6>
+                    <p><strong>DEBITO:</strong> {{transaccionesResumen.cantidadDebitos}}</p>
+                    <p><strong>CREDITO:</strong> {{transaccionesResumen.cantidadCreditos}}</p>
+                    <h6>Transacciones Promedio: </h6>
+                    <p><strong>Prom Credito:</strong>${{transaccionesResumen.promedioCredito}}</p>
+                    <p><strong>Prom Debito:</strong>${{transaccionesResumen.promedioDebito}}</p>
+                    <h6>Total de Dinero:</h6>
+                    <p><strong>CREDITO:</strong>${{transaccionesResumen.totalCreditos}}</p>
+                    <p><strong>DEBITO:</strong>${{transaccionesResumen.totalDebitos}}</p> 
+                </mat-expansion-panel>
+                <mat-expansion-panel >
+                    <mat-expansion-panel-header>
+                    <mat-panel-title> Transacciones </mat-panel-title>
+                    <mat-panel-description>
+                       Frecuencia y ritmo de movimiento
+                    </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <h6>Movimiento en días (desde la primer hasta el último día de transacción)</h6>
+                    <p><strong>Días entre transacciones:</strong>{{transaccionesFrecuencia.diasEntreTransacciones}}</p>
+                    <p><strong>Total de días:</strong>{{transaccionesFrecuencia.totalTransacciones}} días</p>
+                </mat-expansion-panel>
+                <mat-expansion-panel >
+                    <mat-expansion-panel-header>
+                        <mat-panel-title> Patrones</mat-panel-title>
+                        <mat-panel-description>
+                            Patrones de Ingresos    
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    
+                    <section class="patron-section">
+                        <h6>Transacciones <strong class="credito">Crédito</strong></h6>
+                        <div  class="info-block">
+                        <p><strong>Total:</strong> ${{ patronesCredito.totalCreditos }}</p>
+                        <p><strong>Cantidad:</strong> {{ patronesCredito.cantidad }}</p>
+                        <h6><strong>Canales:</strong></h6>
+
+                        <div class="canales-container">
+                            <div class="canal-card mat-elevation-z2">
+                                @for(canal of transformarCanales(patronesCredito.canales); track $index){
+                                    <h6>{{ canal.canal }}</h6>
+                                    <p><strong>Transacciones:</strong> {{ canal.cantidad }}</p>
+                                    <p><strong>Monto total:</strong> ${{ canal.montoTotal }}</p>
+                                }
+                            </div>
+                        </div>
+                        </div>
+                    </section>
+
+                    <mat-divider class="my-3"></mat-divider>
+
+                    <section class="patron-section">
+                        <h6>Transacciones <strong class="debito">Débito</strong></h6>
+                        <div  class="info-block">
+                        <p><strong>Total Débitos:</strong> ${{ patronesDebito.totalDebitos  }}</p>
+                        <p><strong>Cantidad:</strong> {{ patronesDebito.cantidad }}</p>
+                        <p><strong>Canales:</strong></p>
+
+                        <div class="canales-container">
+                            <div class="canal-card mat-elevation-z2">
+                            @for(canal of transformarCanales(patronesCredito.canales); track $index){
+                                    <h6>{{ canal.canal }}</h6>
+                                    <p><strong>Transacciones:</strong> {{ canal.cantidad }}</p>
+                                    <p><strong>Monto total:</strong> ${{ canal.montoTotal }}</p>
+                            }
+                            </div>
+                        </div>
+                        </div>
+                    </section>
+                </mat-expansion-panel>
+                <mat-expansion-panel >
+                    <mat-expansion-panel-header>
+                        <mat-panel-title> Conclusiones </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <section class="conclusiones-section">
+                        <!-- Créditos -->
+                        <h5> Ingresos (Créditos)</h5>
+                        <div class="conclusion-block">
+                        <p><strong>Total recibido:</strong> {{ patronesCredito.totalCreditos  }}</p>
+                        <p><strong>Número de transacciones de ingreso:</strong> {{ patronesCredito.cantidad }}</p>
+                        <p><strong>Promedio por transacción:</strong> {{ (patronesCredito.totalCreditos / patronesCredito.cantidad)  }}</p>
+                        <p><strong>Conclusión:</strong> La mayor parte de los ingresos proviene de depósitos en agencia, mientras que transferencias y los intereses son menores. Esto indica que el titular usa principalmente depósitos físicos.</p>
+                        </div>
+                        <br>
+                        <mat-divider class="my-3"></mat-divider>
+                        <br>
+                        <!-- Débitos -->
+                        <h5>Gastos (Débitos)</h5>
+                        <div class="conclusion-block">
+                        <p><strong>Total gastado:</strong> {{ patronesDebito.totalDebitos  }}</p>
+                        <p><strong>Número de transacciones de débito:</strong> {{ patronesDebito.cantidad }}</p>
+                        <p><strong>Promedio por transacción:</strong> {{ (patronesDebito.totalDebitos / patronesDebito.cantidad) }}</p>
+                        <p><strong>Conclusión:</strong> Los gastos se concentran en transferencias a terceros y pagos con POS. Esto refleja un patrón mixto: pagos a proveedores/personas y consumo personal.</p>
+                        </div>
+
+                        <mat-divider class="my-3"></mat-divider>
+
+                        <!-- Canales -->
+                        <h5>Canales más usados</h5>
+                        <div class="conclusion-block">
+                        <p><strong>Principales canales:</strong> Agencia, POS, Transferencias y Domiciliaciones.</p>
+                        <p><strong>Conclusión:</strong> El titular combina uso físico (agencia, cajero) y digital (POS, transferencias, domiciliaciones), pero el flujo principal de ingresos es físico.</p>
+                        </div>
+
+                         <br>
+                        <mat-divider class="my-3"></mat-divider>
+                        <br>
+
+                
+                        <h5>Observaciones generales</h5>
+                        <div class="conclusion-block">
+                        <ul>
+                            <li>Depósitos frecuentes en agencia y pocas transferencias entrantes: preferencia por efectivo.</li>
+                            <li>Gastos variados, con enfoque en pagos digitales y POS.</li>
+                            <li>Intereses acreditados bajos; el ahorro no se beneficia significativamente de rendimientos.</li>
+                            <li>Comportamiento financiero saludable: ingresos > gastos, con ahorro positivo.</li>
+                        </ul>
+                        </div>
+                    </section>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+        <div class = "gestion-distribucion-costos">
+            <canvas id="graficaRadar"></canvas>
+        </div>
+    </section>
+    
+    
+</section>

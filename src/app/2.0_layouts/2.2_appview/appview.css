@@ -1,0 +1,63 @@
+#anuncio-content{
+    width: 100%;
+    padding: 40px;
+    text-align: center;
+    color: aliceblue;
+}
+
+#header-content{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 15px;
+    background-color: #111E15;
+    color: aliceblue;
+}
+#header-content-name{
+    width: fit-content;
+    display: flex;
+    gap: 20px;
+}
+#header-buttons{
+    padding-top: 10px;
+}
+.header-name h1{
+    margin-top:10px;
+}
+i-lucide{
+    color:#38E07B
+}
+#header-buttons-ej1, #header-buttons-ej2{
+    padding: 8px 13px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+#header-buttons-ej1{
+    background-color: #111E15;
+    color: aliceblue;
+}
+#header-buttons-ej2{
+    background-color: #38E07B;
+    color: #000;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/*FOOOOTER*/
+#footer-content, #footer-content-text{
+    width: 100%;
+    padding: 15px;
+    background-color: #111E15;
+    color: rgb(189, 189, 189);
+}
+#footer-content-text{
+    display: flex;
+    justify-content: space-around;
+}
+.small-private{
+    display: flex;
+    gap: 20px;
+}

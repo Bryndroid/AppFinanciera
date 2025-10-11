@@ -1,0 +1,141 @@
+#inicio-content{
+    width: 100%;
+    height: 89.9vh;
+    background-color: #111E15;
+    padding: 20px;
+    overflow: auto;
+}
+.inicio-grafica-uno{
+    width: 38em;
+    height:fit-content;
+    background-color: #031a03;
+}
+#inicio-graphic{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+#inicio-table{
+    margin-top: 50px;
+} 
+#inicio-table h5{
+    font-size: 32px;
+    font-weight: bold;
+    color: aliceblue;
+    margin-bottom: 10px;
+}
+
+/*-------TABLA--------*/
+.banco-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  background-color: #031a03; /* Fondo general */
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.banco-table thead {
+  background-color: #04552f; /* Verde oscuro para encabezado */
+}
+
+.banco-table th, 
+.banco-table td {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.banco-table tbody tr:nth-child(even) {
+  background-color: #0a1a0a; /* Verde muy oscuro alternado */
+}
+
+.banco-table tbody tr:hover {
+  background-color: #1a2b1a; /* Resalta al pasar el mouse */
+  cursor: pointer;
+}
+
+.banco-table th {
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+/*-----------------*/
+h4{
+      padding: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    color: aliceblue;
+    margin-bottom: 10px;
+}
+#inicio-academico{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+
+}
+
+#inicio-curso{
+    color: aliceblue;
+    padding: 25px;
+}
+.inicio-curso-titulo h5{
+    font-size: 26px;
+    font-weight: bold;
+}
+.carta-profesor{
+    height: fit-content;
+    width: 20em;
+    background-color: #041108;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    padding-bottom: 10px;
+    color: aliceblue;
+}
+.carta-ovalo{
+    background-color: #5de092;
+    padding-bottom: 100px;
+    border-bottom-left-radius: 100000000px;
+    border-bottom-right-radius: 1000000000px;
+    margin-bottom:35px;
+}
+.image-carta{
+    position: absolute; 
+    z-index: 1000;
+    border-radius: 3000px;
+    left:28%;
+    top:10px;  
+}
+.image-carta img{
+    border-radius: 3000px;
+    width:8em;
+    border: 4px solid aliceblue;
+}
+.carta-text-title{
+    padding: 5px;
+}
+.carta-text-title p{
+    margin-bottom: 6px;
+    font-weight: bold;
+    font-size: 22px;
+}
+.carta-text-descripcion{
+    padding: 10px;
+}  
+
+
+.buttons-ej1{
+    padding: 14px 16px;
+    font-size: 14px;
+    border: 3px solid;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bold;
+}
+.buttons-ej1{
+    background-color: #38E07B;
+}
