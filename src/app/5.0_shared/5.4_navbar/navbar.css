@@ -1,6 +1,7 @@
 #navbar-content{
     width: fit-content;
-    height: 100vh;
+    max-height: 100%;
+    overflow: auto;
     padding:10px;
     background-color: #111E15;
     color: aliceblue;
@@ -38,6 +39,7 @@ hr{
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: 20px;
     height:80%;
 }
