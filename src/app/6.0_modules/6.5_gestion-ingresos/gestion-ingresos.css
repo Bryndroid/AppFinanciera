@@ -59,6 +59,6 @@ mat-table{
 }
 @media (max-width: 440px){
     canvas{
-        width: 1px;
+        width: 220px;
     }
 }
