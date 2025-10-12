@@ -22,7 +22,8 @@ html {
     inactive-label-text-color: white,
     active-hover-label-text-color: white,
     inactive-hover-label-text-color: white,
-    active-label-text-color: rgb(12, 221, 58)
+    active-label-text-color: rgb(12, 221, 58),
+    pagination-icon-color: green
   ));
 
   @include mat.table-overrides((

@@ -1,9 +1,7 @@
 #ahorro-content{
     width: 100%;
     max-width: 100%;
-    height: 90vh;
     padding: 25px;
-    overflow: auto;
 }
 #ahorro-content span{
     font-weight: bold;
@@ -13,6 +11,8 @@
 #contenedor-calculadora-prestamo{
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
   width: 100%;
 }
 #calculadora-contenedor{
@@ -149,10 +149,11 @@ table {
 }
 
 .modal-content-main{
-    max-width: 50%;
+    width: 80%;
     max-height: 76vh;
     overflow: auto;
     position: relative;
+    box-shadow: 0px 4px 12px rgba(4, 235, 23, 0.788);
 }
 
 caption {
@@ -233,4 +234,16 @@ td {
   width: 100%;
   border-radius: 10px;
   cursor: pointer;
+}
+
+@media(max-width: 720px){
+    #main-content-results{
+      width: 100%;
+    }
+    #main-content-results-table{
+      width: 100%;
+    }
+    .modal-content-main{
+      width: 100%;
+    }
 }

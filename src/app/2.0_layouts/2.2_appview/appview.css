@@ -61,3 +61,11 @@ i-lucide{
     display: flex;
     gap: 20px;
 }
+
+/*------RESPONSIVE-------*/
+@media(max-width:500px){
+    #header-content{
+        gap: 20px;
+        justify-content: center;
+    }
+}

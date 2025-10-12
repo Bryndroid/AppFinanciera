@@ -18,3 +18,12 @@
     text-align: center;
     color: aliceblue;
 }
+@media (max-width:820px){
+    #contenedor{
+        flex-wrap: wrap;
+        height:fit-content;
+    }
+    .contenuwu{
+        max-height: none;
+    }
+}

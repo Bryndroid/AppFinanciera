@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    text-align: center;
 }
 p i{
     color: rgb(13, 219, 82)
@@ -15,6 +16,7 @@ p i{
     font-weight: bold;
     padding: 20px;
     margin-bottom: 10px;
+    text-align: center;
 }
 .nopremium-text{
     width: 60%;

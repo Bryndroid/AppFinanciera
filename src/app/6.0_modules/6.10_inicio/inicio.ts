@@ -64,10 +64,11 @@ export class Inicio implements AfterViewInit {
             text: 'Ingresos vs Costos',
             font: {
               size: 18
-            }
+            },
+            color: "white",
           },
           legend: {
-            position: 'bottom'
+            position: 'bottom',
           },
           tooltip: {
             mode: 'index',
@@ -123,7 +124,8 @@ export class Inicio implements AfterViewInit {
           title: {
             display: true,
             text: 'Gastos: Mes Actual vs Mes Pasado',
-            font: { size: 18 }
+            font: { size: 18 },
+            color: "white"
           },
           legend: {
             position: 'bottom'

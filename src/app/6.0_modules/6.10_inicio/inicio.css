@@ -12,6 +12,7 @@
 #inicio-graphic{
     width: 100%;
     height: fit-content;
+    justify-content: center;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -72,18 +73,22 @@ h4{
 }
 #inicio-academico{
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    justify-content: center;
     width: 100%;
-
 }
 
 #inicio-curso{
     color: aliceblue;
     padding: 25px;
+    width: 70%;
+    flex: 1
+    ;
 }
 .inicio-curso-titulo h5{
     font-size: 26px;
     font-weight: bold;
+    text-align: center;
 }
 .carta-profesor{
     height: fit-content;
@@ -125,8 +130,14 @@ h4{
 .carta-text-descripcion{
     padding: 10px;
 }  
-
-
+.inicio-curso-mattab h5{
+    font-size: 20px;
+    text-align: center;
+    margin: 10px;
+}
+.inicio-curso-mattab p{
+    text-align: center;
+}
 .buttons-ej1{
     padding: 14px 16px;
     font-size: 14px;

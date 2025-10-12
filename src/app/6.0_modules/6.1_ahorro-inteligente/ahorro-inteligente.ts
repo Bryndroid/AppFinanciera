@@ -130,20 +130,26 @@ export class AhorroInteligente implements OnInit, AfterViewInit{
   //-------------
   ngOnInit() {
     this.formulario = this.fb.group({
-      Prestamo: [null, [Validators.required, Validators.min(1)]],
-      Tasa: [ Validators.required],
-      Plazo: [null, [Validators.required, Validators.min(1), Validators.max(50)]]
+      Prestamo: ["", [Validators.required, Validators.min(1)]],
+      Tasa: ["10", Validators.required],
+      Plazo: ["", [Validators.required, Validators.min(1), Validators.max(50)]]
     });
 
   }
-
+  reiniciarFormulario() {
+    this.formulario.reset({
+      Prestamo: "",
+      Tasa: "",
+      Plazo: ""
+    });
+  }
   calcular(){
     if(this.formulario.invalid == true){
       this.formulario.markAllAsTouched();
       alert("Complete correctamente todos los campos")
     }else{
       this.AEE();
-      this.banderaPrestamo = !this.banderaPrestamo;
+      this.banderaPrestamo = true;
       this.AEETabla(parseFloat(this.cuotaMensual), parseFloat(this.formulario.value.Prestamo));
       this.generarTablaAmortizacion();
     }
