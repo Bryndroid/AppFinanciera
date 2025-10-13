@@ -41,6 +41,20 @@ html {
 
     header-indicator-color: rgb(13, 197, 13)
   ));
+  @include mat.form-field-overrides((
+    disabled-input-text-placeholder-color: orange,
+    disabled-leading-icon-color: red,
+    outlined-focus-outline-color:rgb(12, 221, 58),
+    outlined-focus-label-text-color:rgb(235, 241, 237),
+    outlined-hover-label-text-color: green,
+    outlined-hover-outline-color: rgb(12, 221, 58),
+    outlined-input-text-color: white,
+    outlined-label-text-color: white,
+  ));
+
+  @include mat.checkbox-overrides((
+    label-text-color: white
+  ));
 }
 body {
   // Default the application to a light color theme. This can be changed to

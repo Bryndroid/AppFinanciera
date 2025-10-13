@@ -16,6 +16,7 @@ body, html{
     height: 100%;
      background-color: #011a04 !important;
 background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
+scroll-behavior: smooth;
 }
 img{
     width: 100%;

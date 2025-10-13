@@ -1,16 +1,10 @@
-<section id = "navbar-content">
-    <section id = "navbar-logo">
-        <div class = "navbar-image">
-            <i-lucide name="piggy-bank" [size]="48" color = "black" ></i-lucide>
-        </div>
-        <div class = "navbar-title">
-            <h1>BukeleCoin</h1>
-        </div>
-    </section>
-    <hr>
-    <section id = "navbar-icons-content">
-        <section id = "cards-navbar">
-            <div class = "card-navbar" (click) = "navegarInicio()">
+
+<section id="navbar-logo-absolute"
+                (mouseenter)="hover = true"
+                (mouseleave)="hover = false">
+        <section id="oculto" [ngClass]="{ 'mostrar': hover, 'ocultar': !hover }">
+            <section id="cards-container-XD">
+            <div class = "card-navbar" (click) = "navegarInicio(0)" [ngClass] = "{selected: banderaNumber == 0}">
                 <div class = "card-image">
                     <i-lucide name="house" [size]="34" color = "white" ></i-lucide>
                 </div>
@@ -18,7 +12,7 @@
                     <h4>Inicio</h4>
                 </div>
             </div>
-            <div class = "card-navbar" (click) = "navegarCuentas()">
+            <div class = "card-navbar" (click) = "navegarCuentas(1)" [ngClass] = "{selected: banderaNumber == 1}">
                 <div class = "card-image">
                     <i-lucide name="wallet" [size]="34" color = "white" ></i-lucide>
                 </div>
@@ -26,7 +20,7 @@
                     <h4>Cuentas</h4>
                 </div>
             </div>
-            <div class = "card-navbar" (click)="navegarInversiones()">
+            <div class = "card-navbar" (click)="navegarInversiones(2)" [ngClass] = "{selected: banderaNumber == 2}">
                 <div class = "card-image">
                     <i-lucide name="badge-dollar-sign" [size]="34" color = "white" ></i-lucide>
                 </div>
@@ -34,7 +28,7 @@
                     <h4>Inversiones</h4>
                 </div>
             </div>
-            <div class = "card-navbar" (click)="navegarGuia()">
+            <div class = "card-navbar" (click)="navegarGuia(3)" [ngClass] = "{selected: banderaNumber == 3}">
                 <div class = "card-image" >
                     <i-lucide name="graduation-cap" [size]="34" color = "white" ></i-lucide>
                 </div>
@@ -42,7 +36,7 @@
                     <h4>E-learning</h4>
                 </div>
             </div>
-            <div class = "card-navbar" (click)="navegarAhorro()">
+            <div class = "card-navbar" (click)="navegarAhorro(4)" [ngClass] = "{selected: banderaNumber == 4}">
                 <div class = "card-image">
                     <i-lucide name="hand-coins" [size]="34" color = "white" ></i-lucide>
                 </div>
@@ -50,7 +44,7 @@
                     <h4>Herramientas</h4>
                 </div>
             </div>
-            <div class = "card-navbar" (click)="navegarMetas()">
+            <div class = "card-navbar" (click)="navegarMetas(5)" [ngClass] = "{selected: banderaNumber == 5}">
                 <div class = "card-image">
                     <i-lucide name="goal" [size]="34" color = "white" ></i-lucide>
                 </div>
@@ -58,14 +52,12 @@
                     <h4>Metas</h4>
                 </div>
             </div>
-        </section>
-        <section id ="navbar-actualiza">
-            <div class = "navbar-button-container">
-                <p>Obten funciones exclusivas</p>
-                <button id = "button-ej1">
-                    Actualiza a Pro
-                </button>
-            </div>
+            </section>
         </section>
     </section>
+<!--Coso para pagar pro-->
+<section id = "pagar-pro">
+    <p>Unete a pro</p>
 </section>
+
+

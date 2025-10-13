@@ -14,6 +14,7 @@ import { AboutUs } from './6.0_modules/6.9_about-us/about-us';
 import { Inicio } from './6.0_modules/6.10_inicio/inicio';
 import { Authcomponent } from './2.0_layouts/2.3_authcomponent/authcomponent';
 import { FormEstado } from './6.0_modules/6.11_form-estado/form-estado';
+import { AuthGuard } from './3.0_guard/autGuard';
 
 
 export const routes: Routes = [
@@ -36,13 +37,13 @@ export const routes: Routes = [
     {
         path: "", component: Home,
         children:[
-            { path: "Inicio", component: Inicio},
-            {path: "Cuentas-Registro", component: FormEstado},
-            { path: "Cuentas", component: GestionIngresos},
+            { path: "Inicio", component: Inicio, canActivate:[AuthGuard]},
+            { path: "Cuentas-Registro", component: FormEstado, canActivate:[AuthGuard]},
+            { path: "Cuentas", component: GestionIngresos, canActivate:[AuthGuard]},
             { path: "Guia-financiera", component: GuiaFinanciera},
             { path: "Herramientas-Ahorro", component: AhorroInteligente},
             { path: "Estado-Financiero", component: EstadoFinanciero},
-            {path: "Metas", component: Gastos}
+            { path: "Metas", component: Gastos}
         ]
     }
 ];

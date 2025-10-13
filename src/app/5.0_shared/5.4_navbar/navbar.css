@@ -1,6 +1,47 @@
+#navbar-logo-absolute{
+    width: 100%;
+
+    transition: all 0.6s ease-out;
+    background-color: #111e15;
+    color: aliceblue;
+}
+
+#cards-container-XD{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+#oculto {
+  opacity: 0;
+  visibility: hidden;        
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  background-color: #111e15;
+  padding: 20px;
+  height: 0;                 
+  overflow: hidden;
+}
+
+#oculto.mostrar {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  height: auto;              
+}
+
+#oculto.ocultar {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  height: 0;                 
+}
+
+
 #navbar-content{
-    width: fit-content;
-    height: 100%;
+    width: 100%;
+    max-height: 20vh;
     overflow: auto;
     padding:10px;
     background-color: #111E15;
@@ -8,11 +49,11 @@
     border-right: 4px solid rgba(0, 0, 0, 0.329);
 }
 #navbar-logo{
-    padding: 35px;
     display: flex;
     gap: 20px;
     text-align: center;
     justify-content: center;
+    cursor: pointer;
     /*background-color: #1b3a23; Otro color*/
 }
 hr{
@@ -55,11 +96,16 @@ hr{
     margin-bottom: 10px;
     cursor: pointer;
     padding: 10px;
+    transition: all 0.2s ease-out;
+     border-radius: 10px;
+}
+.selected{
+    background-color: #38e07bd8;
+    transform: translateY(10px);
+    box-shadow: 0px 0px 0px 0px black;
 }
 .card-navbar:hover{
     background-color: #38e07b9a;
-    border-radius: 10px;
-
 }
 .card-text{
     text-align: center;
@@ -100,8 +146,40 @@ hr{
     border: none;
     border-radius: 10px;
 }
+#pagar-pro{
+    position: fixed;
+    z-index: 99999;
+    color: black;
+    background-color: #38e07b81;
+    border-radius: 999px;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    left:80%;
+    bottom: 10%;
+    transition: all 0.6s ease-out;
+    text-align: center;
+}
 
+#pagar-pro:hover{
+    transform: translateY(-10px);
+}
 
+@media (max-width: 590px){
+    #navbar-logo-absolute{
+        min-height: fit-content;
+    }
+    #oculto{
+        opacity: 1;
+        visibility: visible;
+        height: fit-content;
+    }
+    #oculto.ocultar{
+        opacity: 1;
+        visibility: visible;
+        height: fit-content;
+    }
+}
 @media (max-width:820px){
     #navbar-content{
         width: 100vw;

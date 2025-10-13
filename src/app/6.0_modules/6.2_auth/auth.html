@@ -1,1 +1,99 @@
-<p>auth works!</p>
+<section id = "registro-content">
+    <section id = "registo-content-title">
+        <h1>Crea tu cuenta</h1>
+        <small>¿Ya tienes una cuenta? <a>Inicia sesión</a></small> 
+    </section>
+    <section id = "registro-content-main">
+        <form [formGroup]="formulario" (submit)="onSubmit()">
+            <div class = "registro-form">
+            
+                <mat-form-field  appearance="outline" container-height>
+                    <mat-label>Nombre Completo</mat-label>
+                    <input matInput placeholder="Digite sus nombre completo..." value="" formControlName = "nombreCompleto">
+                 @if(CampoValido("nombreCompleto") == false){
+                    <mat-error>
+                        Digite un nombre válido por favor
+                    </mat-error>
+                    }
+                </mat-form-field>
+
+                
+                <mat-form-field  appearance="outline" >
+                    <mat-label>Fecha de nacimiento</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName = "fechaNacimiento">
+                    @if(CampoValido("fechaNacimiento") == false){
+                    <mat-error>
+                        Ingrese una fecha válida por favor
+                    </mat-error>
+                    }
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="lbl txt4" appearance="outline" >
+                    <mat-label>Correo electrónico</mat-label>
+                    <input matInput type="email" placeholder="agua@solida.com" formControlName = "correo">
+                    @if(CampoValido("correo") == false){
+                    <mat-error>
+                        El correo no es válido
+                    </mat-error>
+                    }
+                </mat-form-field>
+
+                 <mat-form-field appearance="outline">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName = "contraseña"  />
+                    <button
+                    matIconButton
+                    matSuffix
+                    (click)="boolean()"
+                    type = "button"
+                    [attr.aria-label]="'Hide password'"
+    
+                    >
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    @if(CampoValido("contraseña") == false){
+                    <mat-error>
+                        Digite una contraseña segura
+                    </mat-error>
+                    }
+                </mat-form-field>
+                 <mat-form-field appearance="outline">
+                    <mat-label>Confirmar Contraseña</mat-label>
+                    <input matInput [type]="hide2 ? 'password' : 'text'" formControlName = "contraseñaConfirm" />
+                    <button
+                    matIconButton
+                    matSuffix
+                    (click)="boolean2()"
+                    type = "button"
+                    [attr.aria-label]="'Hide password'"
+    
+                    >
+                    <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    @if(CampoValido("contraseñaConfirm") == false){
+                    <mat-error>
+                        Digite una contraseña segura
+                    </mat-error>
+                    }
+                </mat-form-field>
+                <div class = "checklists">
+                    <p><mat-checkbox formControlName="Terminos">Acepto los <span>Terminos y Condiciones</span></mat-checkbox></p>
+                    <p><mat-checkbox formControlName="Privacidad">He leido los <span>acuerdos de privacidad</span></mat-checkbox></p>
+                    @if(bandera && (CampoValido("Terminos") == false || CampoValido("Privacidad") == false)){
+                    <mat-error>
+                        Marque estos marcadores
+                    </mat-error>
+                    }
+                </div>
+                 <div class ="registro-buttons">
+                    <button id = "button-ej1" type = "submit">
+                        Registrarse
+                    </button>
+                 </div>
+            </div>
+        </form>
+    </section>
+</section>

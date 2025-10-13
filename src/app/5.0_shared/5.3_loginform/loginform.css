@@ -1,0 +1,46 @@
+.form-title{
+    text-align: center;
+    margin-bottom: 30px;
+}
+small{
+    font-size: 14px;
+}
+small span{
+    color: green;
+    font-weight: bold;
+}
+.form-forms{
+    width: 340px;
+    height: 280px;
+}
+mat-form-field{
+    width: 100%;
+    margin-bottom: 20px;
+}
+#btn-ej1{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    background-color: rgb(30, 214, 30);
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    transition: all 0.5s ease-out;
+}
+#btn-ej1:hover{
+    transform: translateY(-5px);
+}
+.form-inputs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(1, 22, 6);
+    padding: 20px;
+    border-radius: 10px;
+}

@@ -1,6 +1,44 @@
 <section id = "form-content">
     <div class  = "form-title">
-        <h1>Inicia sesión en BukeleCoin</h1>
-        <small></small>
+        <h1>Inicia sesión en Aurea</h1>
+        <small>¿No estas registrado? <span>Registrarse</span></small>
+    </div>
+    <div class = "form-forms">
+        <form [formGroup]="formulario" (submit)="onSubmit()">
+            <div class = "form-inputs">
+                <mat-form-field  appearance="outline" >
+                    <mat-label>Correo electrónico</mat-label>
+                    <input matInput type="email" placeholder="agua@solida.com" formControlName = "correo">
+                    @if(CampoValido("correo") == false){
+                    <mat-error>
+                        El correo no es válido
+                    </mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName = "contra"  />
+                    <button
+                    matIconButton
+                    matSuffix
+                    (click)="boolean()"
+                    type = "button"
+                    [attr.aria-label]="'Hide password'"
+    
+                    >
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    @if(CampoValido("contraseña") == false){
+                    <mat-error>
+                        Digite una contraseña segura
+                    </mat-error>
+                    }
+
+                </mat-form-field>
+                  <button id = "btn-ej1" type = "submit">
+                        Iniciar sesión
+                    </button>
+            </div>
+        </form>
     </div>
 </section>

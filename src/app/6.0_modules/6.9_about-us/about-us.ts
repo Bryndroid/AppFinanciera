@@ -112,7 +112,7 @@ export class AboutUs implements AfterViewInit{
   }
 
   navegarLogin(){
-    this.route.navigateByUrl("/Inicio")
+    this.route.navigateByUrl("/Registro")
   }
 }
 
