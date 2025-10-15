@@ -90,7 +90,11 @@
                 </div>
                  <div class ="registro-buttons">
                     <button id = "button-ej1" type = "submit">
-                        Registrarse
+                        @if(cargando){
+                            Cargando...
+                        }@else{
+                            Registrarse
+                        }
                     </button>
                  </div>
             </div>

@@ -12,6 +12,10 @@
     color: aliceblue;
     padding: 20px;
 }
+h2 span{
+    color: gray;
+    font-weight: bold;
+}
 .header-text{
 
 }

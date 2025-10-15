@@ -1,7 +1,15 @@
-<section id = "anuncio-content">
+@if(banderaApp == false){
+    <section id = "cargando-contenedor">
+        <div class = "header-image animation">
+            <i-lucide name="piggy-bank" [size]="64" ></i-lucide>
+        </div>
+    </section>
+}@else {
+    <section id = "anuncio-content">
     <p>Tu anuncio aparece acá</p>
 </section>
-<header id= "header-content"> 
+<section id = "content-animado">
+    <header id= "header-content"> 
     <section id = "header-content-name">
         <div class = "header-image">
            <i-lucide name="piggy-bank" [size]="48" ></i-lucide>
@@ -13,10 +21,10 @@
     <section id = "header-space">
     </section>
     <section id = "header-buttons">
-        <button id ="header-buttons-ej1">
+        <button (click)  ="navegarLogin()" id ="header-buttons-ej1">
             Iniciar Sesión
         </button>
-        <button id ="header-buttons-ej2">
+        <button  (click)  ="navegarRegistro()"id ="header-buttons-ej2">
             Registrarse
         </button>
     </section>
@@ -36,3 +44,6 @@
         </small>
     </section>
 </footer>
+</section>
+}
+

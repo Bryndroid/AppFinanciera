@@ -28,31 +28,74 @@ export class GestionIngresos implements AfterViewInit, OnInit{
   public transaccionesFrecuencia: any;
   public patronesDebito: any;
   public patronesCredito: any;
+  public canalesUso: any;
+  public tendenciaSaldo:any;
+  public banderaPorcentaje:any;
+  public flujoSaldo: any;
+  private banderaAyudante: number = 0;
+  private banderaCantidad: number = 0;
+  private banderaAcumuladora: number = 0;
+  public banderaPromedioGasto: string = "";
+  public banderaDias: number = 0;
+
   constructor(private datos: datosService){
 
   }
   ngOnInit(): void {
     this.comparadorEconomico();
-  }
-  ngAfterViewInit(): void {
     //Transacciones
     this.placeholderTransacciones = this.datos.transaccionesCuenta()
     this.placeholderTransRadar  = this.datos.transaccionesCategoriasGrafica();
     //Variables para Polar Chart
     const vectorAux = this.placeholderTransRadar.map(item => item.tipo);
     const data = this.placeholderTransRadar.map(item => { return item.costos});
+    //Para KPI de tendencia de deuda
+    console.log(this.placeholderTransRadar);
+    this.placeholderTransRadar.map((item)=>{
+       if(item.costos >= this.banderaAyudante){
+          this.flujoSaldo = {
+            categoria: item.tipo,
+            costo: item.costos
+          }
+        this.banderaAyudante = item.costos;
+       }
+       //Para saber el porcentaje de gasto en cada compra, (SIN CONTEMPLAR PAGOS)
+        if(item.tipo != "pagos"){
+          this.banderaCantidad =  item.costos + this.banderaCantidad;
+          this.banderaAcumuladora++;
+        }
+    })
+    this.banderaPromedioGasto = (this.banderaCantidad/this.banderaAcumuladora).toFixed(2);
+    //--Tiempo en que se le va el creditos
+    this.diasCredito();
     this.crearPolarChart(vectorAux,data); 
+  }
+  ngAfterViewInit(): void {
+    
     
   }
+  //Función que me manda a llamar las funciones que tiene mi servicio datos para sacar metricas y conclusiones
   comparadorEconomico(){
    this.transaccionesResumen = this.datos.obtenerResumen();
    this.transaccionesFrecuencia = this.datos.obtenerFrecuencia();
-   this.patronesCredito = this.datos.obtenerPatronCreditos();
-   this.patronesDebito = this.datos.obtenerPatronDebitos();
-   console.log(this.patronesCredito);
-   console.log(this.patronesDebito);
+   this.patronesCredito = this.datos.obtenerPatronAbonos();
+   this.patronesDebito = this.datos.obtenerPatronCargos();
+   this.canalesUso = this.datos.obtenerCanalesUso();
+   this.tendenciaSaldo =  this.datos.obtenerTendenciaSaldo();
+   //---Llamar KPIs
+   this.banderaPorcentaje = ((this.tendenciaSaldo.saldoFinal / this.tendenciaSaldo.saldoLimite)*100).toFixed(2)
   }
- 
+  diasCredito(){
+    let contador = parseInt(this.banderaPromedioGasto);
+    let saldoActual = parseInt(this.tendenciaSaldo.saldoFinal);
+    do{
+
+      if(saldoActual<=this.tendenciaSaldo.saldoLimite){
+        this.banderaDias++;
+      }
+      saldoActual = saldoActual + contador;
+    }while(saldoActual<=this.tendenciaSaldo.saldoLimite)
+  }
   mostrarDatosCuenta(){
     this.banderaMostar = !this.banderaMostar;
   }

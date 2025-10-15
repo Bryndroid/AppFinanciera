@@ -1,4 +1,5 @@
 interface Usuario {
+  nombreUsuario: string;
   contraseña: string;
-  // otras propiedades si las hay
+  correo: string;
 }

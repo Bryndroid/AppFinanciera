@@ -1,9 +1,11 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import{ FormsModule,  ReactiveFormsModule, Validators} from "@angular/forms"
+import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-loginform',
   imports: [MatFormFieldModule, MatInputModule, MatIconModule, ReactiveFormsModule],
@@ -13,7 +15,7 @@ import{ FormsModule,  ReactiveFormsModule, Validators} from "@angular/forms"
 export class Loginform implements OnInit{
   public formulario!: FormGroup;
   public hide = false;
-  constructor(private fb: FormBuilder, private ngTip: ChangeDetectorRef){
+  constructor(private fb: FormBuilder, private ngTip: ChangeDetectorRef, private route: Router){
 
   }
   ngOnInit(): void {
@@ -50,16 +52,25 @@ export class Loginform implements OnInit{
   }
   contraIgual(correo: string) {
   const contraStr = localStorage.getItem(correo);
-
+  console.log(contraStr);
   if (contraStr) {
     // Parseamos y le decimos a TypeScript que es un objeto Usuario
     const contraObj: Usuario = JSON.parse(contraStr);
 
     if (contraObj.contraseña === this.formulario.get("contra")?.value) {
-      console.log("Contraseña correcta");
+      sessionStorage.clear();
+      sessionStorage.setItem("usuarioActivo", JSON.stringify({
+        correo: this.formulario.get("correo")?.value,
+        autorizacion: true
+      })); 
+      this.route.navigateByUrl("/Inicio");
     } else {
-      console.log("Contraseña incorrecta");
+      alert("Contraseña o correo incorrecto");
+      return
     }
+  }else{
+    alert("Contraseña o correo incorrecto");
+    return
   }
 } 
 }

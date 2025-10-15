@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class = "main-content-buttons">
-            <button class = "buttons-ej1"  (click)="navegarLogin()">
+            <button class = "buttons-ej1"  (click)="navegarRegistro()">
                 Comenzar ahora
             </button>
             <a href = "#actualizar-cartas">
@@ -251,7 +251,7 @@
         <h4>Invierte en tu futuro: Elige tu plan Ideal</h4>
         <small>Comienza gratis o desbloquea todo el <strong>potencial</strong> con nuestro plan <strong>Pro</strong>. La mejor inversión es en tu futuro</small>
         <section id = "actualizar-cartas">
-            <div class = "carta-subs">
+            <div class = "carta-subs" (click)="navegarLogin()">
                 <div class = "carta-title-subs">
                     <h5>Gratis</h5>
                     <span>Para empezar cambiando tu vida con pequeños pasos</span>
@@ -270,7 +270,7 @@
                     <button id = "btnej2">Comenzar Gratis</button>
                 </div>
             </div>
-            <div class = "carta-subs-pro">
+            <div class = "carta-subs-pro" (click)="navegarLogin()">
                 <!--POSITION ABSOLUTE MÁS POPULAR-->
                 <div class = "carta-title-subs-pro">
                     <h5>Pro</h5>
@@ -291,7 +291,7 @@
                     </ul>
                 </div>
                 <div class = "carta-button-subs-pro">
-                    <button id = "btnej2-pro">Comenzar con Pro</button>
+                    <button id = "btnej2-pro" >Comenzar con Pro</button>
                 </div>
             </div>
         </section>

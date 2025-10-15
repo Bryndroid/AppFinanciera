@@ -97,7 +97,7 @@ export class AboutUs implements AfterViewInit{
       }]};
       this.myChart.config._config.type = this.cambioChart();      
       this.myChart.data = this.dataOne;
-      console.log(this.myChart);
+
       this.myChart.update()
     }, 5000);
   }
@@ -111,8 +111,11 @@ export class AboutUs implements AfterViewInit{
     return this.typeChart[this.contador];
   }
 
-  navegarLogin(){
+  navegarRegistro(){
     this.route.navigateByUrl("/Registro")
+  }
+  navegarLogin(){
+    this.route.navigateByUrl("/Inicio-sesion")
   }
 }
 

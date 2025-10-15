@@ -4,7 +4,34 @@
     text-align: center;
     color: aliceblue;
 }
+#cargando-contenedor{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.animation {
+  animation: piggyBounce 1.6s ease-in-out infinite;
+  color: #38E07B; /* verde brillante de tu paleta */
+}
 
+/* Animación del chanchito */
+@keyframes piggyBounce {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(-10deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-10px) rotate(10deg);
+  }
+}
 #header-content{
     width: 100%;
     height: fit-content;
@@ -14,6 +41,21 @@
     padding: 15px;
     background-color: #111E15;
     color: aliceblue;
+}
+#content-animado{
+      opacity: 0;
+  transform: translateY(-30px);
+  animation: headerFadeIn 1.2s ease-out forwards;
+}
+@keyframes headerFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 #header-content-name{
     width: fit-content;

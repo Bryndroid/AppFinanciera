@@ -22,6 +22,7 @@ import{ FormsModule,  ReactiveFormsModule, Validators} from "@angular/forms"
 export class Auth implements OnInit {
   public formulario!: FormGroup;
   public bandera: boolean = false;
+  public cargando:boolean = false;
   constructor(private fb: FormBuilder, private ngTip: ChangeDetectorRef, private route: Router){
 
   }
@@ -55,9 +56,12 @@ export class Auth implements OnInit {
         usuarioTrue: "Autorizado",
 
       }
-
-      localStorage.setItem(this.formulario.get("correo")?.value, JSON.stringify(objStr));
-      this.route.navigate(['/Inicio-sesion']);
+      let tiemout = setTimeout(()=>{
+        this.cargando = true;
+        localStorage.setItem(this.formulario.get("correo")?.value, JSON.stringify(objStr));
+        this.route.navigate(['/Inicio-sesion']);
+        clearTimeout(tiemout);
+      },1040)
     }
   }
   calcularEdad(fechaNacimiento: Date): number {

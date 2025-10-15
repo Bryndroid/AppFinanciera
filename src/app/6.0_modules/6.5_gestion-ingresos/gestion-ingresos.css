@@ -4,6 +4,7 @@
 #gestion-content-cuenta{
     color: aliceblue;
     width: 100%;
+    background-color:#111E15;
 }
 h6{
     font-size: 18px;
@@ -47,10 +48,34 @@ mat-table{
 #gestion-cuenta-contenedor{
     width: 100%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-around;
     background-color: rgba(0, 0, 0, 0.658);
     flex-wrap: wrap;
+}
+.gestion-KPIS{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-top: 20px;
+}
+.KPIS-carta{
+    height: fit-content;
+    width: fit-content;
+    background-color: rgba(8, 161, 8, 0.247);
+    padding: 10px;
+    border-radius: 10px;
+}
+.gestion-grafica-costos{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+}
+.gestion-distribucion-costos{
+    width: fit-content;
+    margin: 0 auto;
 }
 @media (max-width: 640px){
     canvas{
