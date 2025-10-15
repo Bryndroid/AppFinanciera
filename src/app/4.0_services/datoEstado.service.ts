@@ -191,7 +191,12 @@ export class datosService{
 
         return resultado;
     }
-
+    cambiarDatos(transacciones:Transaccion){
+      if(transacciones.tipo == "ABONO"){
+        this.placeholderEstado.saldo_al_cierre =  this.placeholderEstado.saldo_al_cierre - transacciones.monto;
+      }
+      this.placeholderEstado.transacciones.push(transacciones);
+    }
     transaccionesCategoriasGrafica(): AgrupacionDias[] {
   const categorias: Record<string, { costos: number; dias: string[] }> = {};
 

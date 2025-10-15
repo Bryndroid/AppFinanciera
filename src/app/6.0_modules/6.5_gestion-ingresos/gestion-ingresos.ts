@@ -1,4 +1,4 @@
-import { Component,AfterViewInit,OnInit,viewChild, ViewChild, ElementRef } from '@angular/core';
+import { Component,AfterViewInit,OnInit,viewChild, ViewChild, ElementRef, ChangeDetectorRef} from '@angular/core';
 import { Chart, registerables } from 'chart.js'
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
@@ -7,20 +7,29 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { datosService } from '../../4.0_services/datoEstado.service';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDividerModule} from '@angular/material/divider';
+//Para forms
+
+import { FormGroup, FormBuilder, Form } from '@angular/forms';
+
+import{ FormsModule,  ReactiveFormsModule, Validators} from "@angular/forms"
+
 Chart.register(...registerables);
 
 @Component({
   selector: 'app-gestion-ingresos',
-  imports: [MatTabsModule, MatPaginatorModule,MatSortModule, MatTableModule, MatExpansionModule,MatDividerModule],
+  imports: [MatTabsModule, MatPaginatorModule,MatSortModule, MatTableModule, MatExpansionModule,MatDividerModule, FormsModule, ReactiveFormsModule],
   templateUrl: './gestion-ingresos.html',
   styleUrl: './gestion-ingresos.css'
 })
 export class GestionIngresos implements AfterViewInit, OnInit{
+  //Formulario
+  public formulario!: FormGroup;
   public banderaCuentaTiene: boolean =  false;
   placeholderTransacciones = [{}];
   placeholderTransRadar!:AgrupacionDias[];
   public banderaMostar = false;
   public canal: any;
+  public canal2: any;
   polarChart!: Chart;
   lineChart!: Chart;
   //Variables concatenadoras
@@ -37,11 +46,16 @@ export class GestionIngresos implements AfterViewInit, OnInit{
   private banderaAcumuladora: number = 0;
   public banderaPromedioGasto: string = "";
   public banderaDias: number = 0;
-
-  constructor(private datos: datosService){
+   isModalOpen = false;
+  public banderaOtros: boolean = false;
+  public banderaOtros1:boolean = false;
+  public arrayAuxiliar: any;
+  public arrayAuxiliar1: any;
+  constructor(private datos: datosService, private fb: FormBuilder, private cd: ChangeDetectorRef){
 
   }
   ngOnInit(): void {
+    this.iniciarFormulario();
     this.comparadorEconomico();
     //Transacciones
     this.placeholderTransacciones = this.datos.transaccionesCuenta()
@@ -50,7 +64,6 @@ export class GestionIngresos implements AfterViewInit, OnInit{
     const vectorAux = this.placeholderTransRadar.map(item => item.tipo);
     const data = this.placeholderTransRadar.map(item => { return item.costos});
     //Para KPI de tendencia de deuda
-    console.log(this.placeholderTransRadar);
     this.placeholderTransRadar.map((item)=>{
        if(item.costos >= this.banderaAyudante){
           this.flujoSaldo = {
@@ -70,6 +83,16 @@ export class GestionIngresos implements AfterViewInit, OnInit{
     this.diasCredito();
     this.crearPolarChart(vectorAux,data); 
   }
+  iniciarFormulario(){
+    this.formulario = this.fb.group({
+      selectCargo: ["",[Validators.required]],
+      inputMonto:[0,[Validators.required, Validators.min(0)]],
+      inputCategoria: ["", [Validators.required]],
+      inputCanal: ["", [Validators.required]],
+      dateFecha: ["", [Validators.required]],
+      inputDetalle: ["" ]
+    })
+  }
   ngAfterViewInit(): void {
     
     
@@ -82,6 +105,8 @@ export class GestionIngresos implements AfterViewInit, OnInit{
    this.patronesDebito = this.datos.obtenerPatronCargos();
    this.canalesUso = this.datos.obtenerCanalesUso();
    this.tendenciaSaldo =  this.datos.obtenerTendenciaSaldo();
+   //Obtengo las categorias
+   this.arrayAuxiliar =  Object.keys(this.canalesUso);
    //---Llamar KPIs
    this.banderaPorcentaje = ((this.tendenciaSaldo.saldoFinal / this.tendenciaSaldo.saldoLimite)*100).toFixed(2)
   }
@@ -201,5 +226,67 @@ export class GestionIngresos implements AfterViewInit, OnInit{
       canal,
       ...valores
     }));
+  }
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+  cambiarOtro(){
+    this.banderaOtros = true;
+    
+    
+  }
+  onSubmit(){
+    
+    if(this.formulario.invalid){
+      alert("Complete correctamente el formulario")
+      return;
+    }
+    const transaccionNueva: Transaccion = {
+      fecha: this.formulario.get("dateFecha")?.value,
+      descripcion:  this.formulario.get("inputCategoria")?.value,
+      tipo: this.formulario.get("selectCargo")?.value,
+      monto: this.formulario.get("inputMonto")?.value,
+      balance: this.tendenciaSaldo.saldoFinal,
+      referencia: this.formulario.get("inputDetalle")?.value,
+      canal: this.formulario.get("inputCanal")?.value
+    }
+    this.datos.cambiarDatos(transaccionNueva);
+    //---todo de nuevo por que cambie datos xd
+    this.comparadorEconomico();
+    //Transacciones
+    this.placeholderTransacciones = this.datos.transaccionesCuenta()
+    this.placeholderTransRadar  = this.datos.transaccionesCategoriasGrafica();
+    //Variables para Polar Chart
+    const vectorAux = this.placeholderTransRadar.map(item => item.tipo);
+    const data = this.placeholderTransRadar.map(item => { return item.costos});
+    //Para KPI de tendencia de deuda
+    this.placeholderTransRadar.map((item)=>{
+       if(item.costos >= this.banderaAyudante){
+          this.flujoSaldo = {
+            categoria: item.tipo,
+            costo: item.costos
+          }
+        this.banderaAyudante = item.costos;
+       }
+       //Para saber el porcentaje de gasto en cada compra, (SIN CONTEMPLAR PAGOS)
+        if(item.tipo != "pagos"){
+          this.banderaCantidad =  item.costos + this.banderaCantidad;
+          this.banderaAcumuladora++;
+        }
+    })
+    this.banderaPromedioGasto = (this.banderaCantidad/this.banderaAcumuladora).toFixed(2);
+    //--Tiempo en que se le va el creditos
+    this.diasCredito();
+    this.updateChart(vectorAux,data);
+    this.cd.detectChanges();
+  }
+  updateChart(labelsOwo:any,dataset:any){
+    this.polarChart.data.labels = labelsOwo;
+    this.polarChart.data.datasets[0].data = dataset;
+    this.polarChart.update(); // esto refresca la gráfica con los nuevos datos
   }
 }

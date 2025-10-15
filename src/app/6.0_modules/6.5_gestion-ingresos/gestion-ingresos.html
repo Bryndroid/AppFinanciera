@@ -279,7 +279,81 @@
         <div class = "gestion-distribucion-costos">
             <canvas id="graficaRadar"></canvas>
         </div>
+        <section id = "gestion-form-transaccion">
+            <section id = "gestion-modal">
+                <button class = "gestion-modal-button" (click)="openModal()">
+                    Agregar transacciones
+                </button> 
+            </section>
+        </section>
+        <!-- Modal -->
+        <div class="modal" [class.show]="isModalOpen">
+            <div class="modal-content">
+                <span class="close" (click)="closeModal()">&times;</span>
+                <div class = "gestion-form">
+                    <form id="formulario-transaccion" [formGroup]="formulario" >
+                        <div class = "form-transaccion">
+                            <label>Tipo de transacción</label>
+                            <select formControlName = "selectCargo">
+                                <option value ="CARGO">Cargo</option>
+                                <option value = "ABONO">Abono</option>
+                            </select>
+                        </div>
+                        <div class = "form-transaccion">
+                            <label>Monto</label>
+                            <input formControlName = "inputMonto" type = "number" min = 0 max = 10000 step =10 >
+                        </div>
+                        <div class = "form-categoria">
+                            <label>Categoria de transacción</label>
+                            @if(banderaOtros == false){
+                                <select formControlName = "inputCategoria">
+                                    <option value = "compra">Compras</option>
+                                    <option value ="retiro">Retiros</option>
+                                    <option value = "interéss"d>Intereses</option>
+                                    <option value = "comisión">Comisiones</option>
+                                    <option value = "pago">Pagos</option>
+                                    <option value = "transferencia">Transferencia</option>
+                                <option value ="otros">Otros</option>
+                            </select>
+                            }@else {
+                                <input type = "text" placeholder = "Escribe la categoria nueva..."  formControlName = "inputCategoria" value = "a">
+                            }
+                        </div>
+                        <div class ="form-canal">
+                            <label>Canal de transacción</label>
+                           @if(banderaOtros1 ==false){
+                             <select formControlName = "inputCanal">
+                               @for(canal of arrayAuxiliar; track $index){
+                                     @if($index ==0){
+                                        <option value = {{canal}} selected>{{canal}}</option>
+                                    }
+                                    @else {
+                                        <option value = {{canal}}>{{canal}}</option>
+                                    }
+                               }
+                               <option value = otro>Otro...</option>
+                            </select>
+                           }@else {
+                                <input formControlName = "inputCanal" type = "text" placeholder = "Escribe la categoria nueva..." value = "a" >
+                           }
+                        </div>
+                        <div class ="form-fecha">
+                            <label>Fecha de transacción</label>
+                            <input type = "date" formControlName = "dateFecha">
+                        </div>
+                        <div class ="form-referencia">
+                            <label>Detalla la referencia de transacción</label>
+                            <input formControlName = "inputDetalle" type = "text" placeholder = "Escribe el texto largo aburrido...">
+                        </div>
+                        <div class ="form-buttons">
+                            <button type ="submit" (click)="onSubmit()">Enzviar</button>
+                            <button type = "button" (click)="closeModal()">Cerrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
     
-    
+
 </section>
