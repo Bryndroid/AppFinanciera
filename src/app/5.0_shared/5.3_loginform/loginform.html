@@ -1,7 +1,7 @@
 <section id = "form-content">
     <div class  = "form-title">
         <h1>Inicia sesión en Aurea</h1>
-        <small>¿No estas registrado? <span>Registrarse</span></small>
+        <small>¿No estas registrado? <span (click) = "navegarRegistro()">Registrarse</span></small>
     </div>
     <div class = "form-forms">
         <form [formGroup]="formulario" (submit)="onSubmit()">

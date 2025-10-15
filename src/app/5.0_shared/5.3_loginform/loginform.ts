@@ -72,5 +72,9 @@ export class Loginform implements OnInit{
     alert("Contraseña o correo incorrecto");
     return
   }
-} 
+ 
+  } 
+   navegarRegistro(){
+    this.route.navigateByUrl("/Registro");
+  }
 }

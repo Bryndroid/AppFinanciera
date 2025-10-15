@@ -1,7 +1,7 @@
 <section id = "registro-content">
     <section id = "registo-content-title">
         <h1>Crea tu cuenta</h1>
-        <small>¿Ya tienes una cuenta? <a>Inicia sesión</a></small> 
+        <small>¿Ya tienes una cuenta? <span (click) = "navegarLogin()">Inicia sesión</span></small> 
     </section>
     <section id = "registro-content-main">
         <form [formGroup]="formulario" (submit)="onSubmit()">

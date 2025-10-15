@@ -17,6 +17,11 @@ input{
    padding-right: 10px;
    padding-left: 10px;
 }
+small span{
+    color: green;
+    font-weight: bold;
+    cursor: pointer;
+}
 mat-form-field{
     width: 100%;
     height: 100px;

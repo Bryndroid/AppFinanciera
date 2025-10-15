@@ -178,41 +178,71 @@
                         <h4>Tendendia de deuda</h4>
                     </div>
                     <div class = "kpi-content">
-                        <p>Tu saldo actualmente es: ${{tendenciaSaldo.saldoFinal}}</p>
-                        <p>Limite de saldo en tarjeta: ${{tendenciaSaldo.saldoLimite}}</p>
+                        <p>Tu saldo actualmente es: <span>
+                            ${{tendenciaSaldo.saldoFinal}}
+                        </span></p>
+                        <p>Limite de saldo en tarjeta: <span>
+                            ${{tendenciaSaldo.saldoLimite}}
+                        </span></p>
                     </div>
                     <div classs = "kpi-warning">
                         <!--NGclass para darle un color de acorde al porcentaje-->
-                        <p>Tu deuda es actualmente un {{banderaPorcentaje}}% del saldo total de la tarjeta</p>
-                        <p>Intereses después de fecha corte: ${{(tendenciaSaldo.saldoFinal*(tendenciaSaldo.tazaInteres/100)).toFixed(2)}}</p>
+                        <p>Tu deuda es actualmente un <span>
+                            {{banderaPorcentaje}}%
+                        </span> del saldo total de la tarjeta</p>
+                        <p>Intereses después de fecha corte: <span>
+                            ${{(tendenciaSaldo.saldoFinal*(tendenciaSaldo.tazaInteres/100)).toFixed(2)}}
+                        </span></p>
                         <!--If de acorde al porcentaje-->
                        @if(banderaPorcentaje >35){
                          <div class = "kpi-advanced-adivce">
-                            <p>¡Tienes la deuda muy alta!</p>
-                            <span>
-                                Un porcentaje aceptable de deuda es por debajo del 30%.
-                            </span>
+                            <div class = "kpi-warning-content">
+                                <p>¡Tienes la deuda muy alta!</p>
+                                <span>
+                                    Un porcentaje aceptable de deuda es por debajo del 35%.
+                                </span>
+                                <div class = "icon-warnig">
+                                    <i-lucide name="triangle-alert" [size]="29" color = "#08b81f"></i-lucide>
+                                </div>
+                            </div>
                             <div class ="kpi-data">
                                 <p>¿Que hacer?</p>
                                 <ul>
-                                    <li>Abona más del pago mínimo a tu deuda (Abonos > ${{tendenciaSaldo.pagoMinimo}} )</li>
-                                    <li>Haz tus abonos antes de la fecha de corte (Fecha de corte: {{tendenciaSaldo.fechaCorte}}) </li>
-                                    <li>Administra tus gastos (Más flujo de saldo en: {{flujoSaldo.categoria}}: ${{flujoSaldo.costo}})</li>
+                                    <li>Abona más del pago mínimo a tu deuda (Abonos > <span>
+                                         ${{tendenciaSaldo.pagoMinimo}}
+                                    </span> )</li>
+                                    <li>Haz tus abonos antes de la fecha de corte (Fecha de corte: <span>
+                                        {{tendenciaSaldo.fechaCorte}})
+                                    </span> </li>
+                                    <li>Administra tus gastos (Más flujo de saldo en: {{flujoSaldo.categoria}}: <span>
+                                        ${{flujoSaldo.costo}}
+                                    </span>)</li>
                                 </ul>
                             </div>
                         </div>
                        }@else {
                             <div class = "kpi-advanced-adivce">
-                            <p>Estas dentro de un margen aceptable de deuda</p>
-                            <span>
-                                Un porcentaje aceptable de deuda es por debajo del 30%.
-                            </span>
+                            <div class = "kpi-warning-content">
+                                <p>Estas dentro de un margen aceptable de deuda</p>
+                                <span>
+                                    Un porcentaje aceptable de deuda es por debajo del 35%.
+                                </span>
+                                <div class = "icon-warnig bien">
+                                    <i-lucide name="circle-check-big" [size]="29" color = "#08b81f"></i-lucide>
+                                </div>
+                            </div>
                             <div class ="kpi-data">
                                 <p>¿Que sigue ahora?</p>
                                 <ul>
-                                    <li>Sigue tratando de abonar más del pago mínimo a tu deuda (Abonos > ${{tendenciaSaldo.pagoMinimo}})</li>
-                                    <li>Haz tus abonos antes de la fecha de corte (Fecha de corte: {{tendenciaSaldo.fechaCorte}}) </li>
-                                    <li>Administra tus gastos (Más flujo de saldo en: {{flujoSaldo.categoria}}: ${{flujoSaldo.costo}})</li>
+                                    <li>Sigue tratando de abonar más del pago mínimo a tu deuda (Abonos > <span>
+                                        ${{tendenciaSaldo.pagoMinimo}}
+                                    </span>)</li>
+                                    <li>Haz tus abonos antes de la fecha de corte (Fecha de corte: <span>
+                                        {{tendenciaSaldo.fechaCorte}}
+                                    </span>) </li>
+                                    <li>Administra tus gastos (Más flujo de saldo en: {{flujoSaldo.categoria}}: <span>
+                                        ${{flujoSaldo.costo}}
+                                    </span>)</li>
                                 </ul>
                             </div>
                         </div>
@@ -224,9 +254,17 @@
                         <h4>Fecha de corte</h4>
                     </div>
                     <div class = "kpi-content">
-                        <p>Tu próxima fecha de corte es: {{tendenciaSaldo.fechaCorte}}</p>
-                        <p>¡Tienes que pagar antes de la fecha de corte para no cobrar interes de ${{tendenciaSaldo.saldoFinal}}</p>
-                        <small>Intereses hasta ahora: ${{(tendenciaSaldo.saldoFinal*(tendenciaSaldo.tazaInteres/100)).toFixed(2)}}. Tasa de Interes Anual: {{tendenciaSaldo.tazaInteres}}%</small>
+                        <p>Tu próxima fecha de corte es: <span>
+                            {{tendenciaSaldo.fechaCorte}}
+                        </span></p>
+                        <p>¡Tienes que pagar antes de la fecha de corte para no cobrar interes de <span>
+                            ${{tendenciaSaldo.saldoFinal}}
+                        </span></p>
+                        <small>Intereses hasta ahora: <span>
+                            ${{(tendenciaSaldo.saldoFinal*(tendenciaSaldo.tazaInteres/100)).toFixed(2)}}
+                        </span>. Tasa de Interes Anual: <span>
+                            {{tendenciaSaldo.tazaInteres}}%
+                        </span></small>
                     </div>
                 </div>
                 <div class ="KPIS-carta">
@@ -234,20 +272,28 @@
                         <h4>Frecuencia de Uso</h4>
                     </div>
                     <div class = "kpi-content">
-                        <p>Tienes un promedio de uso de: {{transaccionesFrecuencia.diasEntreTransacciones}} días</p>
+                        <p>Tienes un promedio de uso de: <span>
+                            {{transaccionesFrecuencia.diasEntreTransacciones}}
+                        </span> días</p>
                         @if(transaccionesFrecuencia.diasEntreTransacciones>2){
-                            <p>Tienes una dependencia al credito, ya que tienes un promedio de uso elevado</p>
+                            <p>Tienes una dependencia al credito, por tu promedio elevado de uso por dia</p>
                         }@else {
                             <p>El uso de tu tarjeta de credito está dentro de un margen aceptable</p>
                         }
-                        <p>Categoría dónde más gastas: {{flujoSaldo.categoria}}</p>
+                        <p>Categoría dónde más gastas: <span>
+                            {{flujoSaldo.categoria}}
+                        </span></p>
                     </div>
                     <div classs = "kpi-warning">
                         <!--NGclass para darle un color de acorde al porcentaje-->
-                        <p>El promedio de todas tus compras ronda entre los: ${{(banderaPromedioGasto)}} </p>
-                        <p>A este ritmo, tu credito se irá en tan solo: {{banderaDias}} semanas</p>
+                        <p>El promedio de todas tus compras ronda entre los: <span>
+                            ${{(banderaPromedioGasto)}}
+                        </span> </p>
+                        <p class = "space-p">A este ritmo, tu credito se irá en: <span>
+                            {{banderaDias}}
+                        </span> semanas</p>
                         <!--If de acorde al porcentaje-->
-                        @if(banderaDias >3){
+                        @if(banderaDias <3){
                             <div class = "kpi-advanced-adivce">
                                 <p>¡Tu credito puede acabar rápido si no lo administras bien!</p>
                                 <div class ="kpi-data">
@@ -258,10 +304,13 @@
                                         <li>El dinero prestado nunca es dinero regalado</li>
                                     </ul>
                                 </div>
+                                 <div class = "icon-warnig-dias">
+                                    <i-lucide name="triangle-alert" [size]="29" color = "#08b81f"></i-lucide>
+                                </div>
                             </div>
                         }@else{
                             <div class = "kpi-advanced-adivce">
-                                <p>Tu credito está en un margen aceptable, aún puede durar bastante</p>
+                                <p>Tienes buen promedio de días, tu credito aún puede durar mucho</p>
                                 <div class ="kpi-data">
                                     <p>¿Que hacer?</p>
                                     <ul>
@@ -270,6 +319,9 @@
                                         <li>El dinero prestado nunca es dinero regalado</li>
                                     </ul>
                                 </div>
+                                <div class = "icon-warnig-dias bien">
+                                    <i-lucide name="circle-check-big" [size]="29" color = "#08b81f"></i-lucide>
+                                </div>
                             </div>
                         }
                     </div>
@@ -277,7 +329,12 @@
             </div>
         </div>
         <div class = "gestion-distribucion-costos">
-            <canvas id="graficaRadar"></canvas>
+            <div class ="graficasRadar-content">
+                <canvas id="graficaRadar"></canvas>
+            </div>
+            <div class ="graficasRadar-line">
+                <canvas id="graficaLine"></canvas>
+            </div>
         </div>
         <section id = "gestion-form-transaccion">
             <section id = "gestion-modal">
@@ -291,19 +348,20 @@
             <div class="modal-content">
                 <span class="close" (click)="closeModal()">&times;</span>
                 <div class = "gestion-form">
+                    <span id ="modal-title">Nueva transacción</span>
                     <form id="formulario-transaccion" [formGroup]="formulario" >
-                        <div class = "form-transaccion">
+                        <div class = "form-content transaccion">
                             <label>Tipo de transacción</label>
                             <select formControlName = "selectCargo">
                                 <option value ="CARGO">Cargo</option>
                                 <option value = "ABONO">Abono</option>
                             </select>
                         </div>
-                        <div class = "form-transaccion">
+                        <div class = "form-content transaccion">
                             <label>Monto</label>
                             <input formControlName = "inputMonto" type = "number" min = 0 max = 10000 step =10 >
                         </div>
-                        <div class = "form-categoria">
+                        <div class = "form-content categoria">
                             <label>Categoria de transacción</label>
                             @if(banderaOtros == false){
                                 <select formControlName = "inputCategoria">
@@ -319,7 +377,7 @@
                                 <input type = "text" placeholder = "Escribe la categoria nueva..."  formControlName = "inputCategoria" value = "a">
                             }
                         </div>
-                        <div class ="form-canal">
+                        <div class ="form-content canal">
                             <label>Canal de transacción</label>
                            @if(banderaOtros1 ==false){
                              <select formControlName = "inputCanal">
@@ -337,17 +395,17 @@
                                 <input formControlName = "inputCanal" type = "text" placeholder = "Escribe la categoria nueva..." value = "a" >
                            }
                         </div>
-                        <div class ="form-fecha">
+                        <div class ="form-content fecha">
                             <label>Fecha de transacción</label>
                             <input type = "date" formControlName = "dateFecha">
                         </div>
-                        <div class ="form-referencia">
+                        <div class ="form-content referencia">
                             <label>Detalla la referencia de transacción</label>
                             <input formControlName = "inputDetalle" type = "text" placeholder = "Escribe el texto largo aburrido...">
                         </div>
                         <div class ="form-buttons">
-                            <button type ="submit" (click)="onSubmit()">Enzviar</button>
-                            <button type = "button" (click)="closeModal()">Cerrar</button>
+                            <button  id = "btn-ej5" type ="submit" (click)="onSubmit()">Enviar</button>
+                            <button  id = "btn-ej5" type = "button" (click)="closeModal()">Cerrar</button>
                         </div>
                     </form>
                 </div>

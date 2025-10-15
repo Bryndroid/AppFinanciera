@@ -192,8 +192,20 @@ export class datosService{
         return resultado;
     }
     cambiarDatos(transacciones:Transaccion){
+      if(this.placeholderEstado.saldo_al_cierre >= this.placeholderEstado.limite_credito){
+        alert("¡Has topado tu tarjeta de credito!. Recomendamos inmediatamente pagar a plazos el interes y la deuda");
+        return
+      }
+      
       if(transacciones.tipo == "ABONO"){
+        if(this.placeholderEstado.saldo_al_cierre <=0){
+          alert("¡Ya pagaste todo tu saldo!")
+          return;
+        }
         this.placeholderEstado.saldo_al_cierre =  this.placeholderEstado.saldo_al_cierre - transacciones.monto;
+      }else if(transacciones.tipo = "CARGO"){
+        this.placeholderEstado.saldo_al_cierre = this.placeholderEstado.saldo_al_cierre + transacciones.monto
+        
       }
       this.placeholderEstado.transacciones.push(transacciones);
     }
@@ -327,6 +339,16 @@ obtenerResumenCompleto() {
     canales: this.obtenerCanalesUso(),
     tendenciaSaldo: this.obtenerTendenciaSaldo()
   };
+}
+/*--- PARAS CHART DE SALDO ---*/
+obtenerEvolucionSaldo() {
+  const fechas: string[] = [];
+  const balances: number[] = [];
+  for (const t of this.placeholderEstado.transacciones) {
+    fechas.push(t.fecha);
+    balances.push(t.balance);
+  }
+  return { fechas, balances };
 }
 
 /*----- AGRUPACIÓN POR CANAL -----*/

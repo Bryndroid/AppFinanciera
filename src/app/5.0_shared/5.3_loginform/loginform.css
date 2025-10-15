@@ -8,6 +8,7 @@ small{
 small span{
     color: green;
     font-weight: bold;
+    cursor: pointer;
 }
 .form-forms{
     width: 340px;

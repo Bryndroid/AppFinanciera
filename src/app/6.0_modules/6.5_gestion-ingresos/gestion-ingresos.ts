@@ -7,6 +7,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { datosService } from '../../4.0_services/datoEstado.service';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDividerModule} from '@angular/material/divider';
+import { LucideAngularModule,  FileIcon, Bold, GalleryThumbnailsIcon  } from 'lucide-angular';
 //Para forms
 
 import { FormGroup, FormBuilder, Form } from '@angular/forms';
@@ -17,12 +18,13 @@ Chart.register(...registerables);
 
 @Component({
   selector: 'app-gestion-ingresos',
-  imports: [MatTabsModule, MatPaginatorModule,MatSortModule, MatTableModule, MatExpansionModule,MatDividerModule, FormsModule, ReactiveFormsModule],
+  imports: [MatTabsModule, MatPaginatorModule,MatSortModule, MatTableModule, MatExpansionModule,MatDividerModule, FormsModule, ReactiveFormsModule, LucideAngularModule],
   templateUrl: './gestion-ingresos.html',
   styleUrl: './gestion-ingresos.css'
 })
 export class GestionIngresos implements AfterViewInit, OnInit{
   //Formulario
+  readonly fileIcon = FileIcon;
   public formulario!: FormGroup;
   public banderaCuentaTiene: boolean =  false;
   placeholderTransacciones = [{}];
@@ -32,6 +34,7 @@ export class GestionIngresos implements AfterViewInit, OnInit{
   public canal2: any;
   polarChart!: Chart;
   lineChart!: Chart;
+  barCharData: any;
   //Variables concatenadoras
   public transaccionesResumen: any;
   public transaccionesFrecuencia: any;
@@ -82,6 +85,7 @@ export class GestionIngresos implements AfterViewInit, OnInit{
     //--Tiempo en que se le va el creditos
     this.diasCredito();
     this.crearPolarChart(vectorAux,data); 
+    this.crearLineChart(this.barCharData.fechas, this.barCharData.balances); 
   }
   iniciarFormulario(){
     this.formulario = this.fb.group({
@@ -105,6 +109,8 @@ export class GestionIngresos implements AfterViewInit, OnInit{
    this.patronesDebito = this.datos.obtenerPatronCargos();
    this.canalesUso = this.datos.obtenerCanalesUso();
    this.tendenciaSaldo =  this.datos.obtenerTendenciaSaldo();
+   this.barCharData = this.datos.obtenerEvolucionSaldo();
+   
    //Obtengo las categorias
    this.arrayAuxiliar =  Object.keys(this.canalesUso);
    //---Llamar KPIs
@@ -221,6 +227,63 @@ export class GestionIngresos implements AfterViewInit, OnInit{
       }
     });
   }
+  crearLineChart(labels:any, data:any){
+    const dataSet ={
+      labels,
+      color: "white",
+      datasets:[
+        {
+          label: "Saldo ($)",
+          data,
+          backgroundColor: 'rgba(56, 224, 123, 0.6)',
+          borderColor: '#38E07B',
+          borderWidth: 2,
+          color: "white"
+        }
+      ]
+    }
+    this.lineChart = new Chart("graficaLine",{
+      type: "line",
+      data: dataSet,
+      options:{
+        responsive: true,
+        plugins:{
+          title:{
+            display: true,
+            text: "Flujo de saldo",
+            font: {
+              size: 18
+            },
+            color: "white",
+          },
+          legend:{
+            position:"bottom",
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false
+          }
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Días',
+              color: "white"
+            }
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Monto en dólares ($)',
+              color: "white"
+            },
+            beginAtZero: true
+          }
+        }
+      }
+    })
+  }
   transformarCanales(canales: { [key: string]: { cantidad: number; montoTotal: number } }) {
     return Object.entries(canales).map(([canal, valores]) => ({
       canal,
@@ -256,6 +319,8 @@ export class GestionIngresos implements AfterViewInit, OnInit{
     }
     this.datos.cambiarDatos(transaccionNueva);
     //---todo de nuevo por que cambie datos xd
+    //-----------------------------------------------------
+
     this.comparadorEconomico();
     //Transacciones
     this.placeholderTransacciones = this.datos.transaccionesCuenta()
@@ -281,12 +346,20 @@ export class GestionIngresos implements AfterViewInit, OnInit{
     this.banderaPromedioGasto = (this.banderaCantidad/this.banderaAcumuladora).toFixed(2);
     //--Tiempo en que se le va el creditos
     this.diasCredito();
+
+    //-----------------------------------------------------
     this.updateChart(vectorAux,data);
+    this.updateChart2(this.barCharData.fechas, this.barCharData.balances)
     this.cd.detectChanges();
   }
   updateChart(labelsOwo:any,dataset:any){
     this.polarChart.data.labels = labelsOwo;
     this.polarChart.data.datasets[0].data = dataset;
-    this.polarChart.update(); // esto refresca la gráfica con los nuevos datos
+    this.polarChart.update(); 
+  }
+  updateChart2(labels:any, dataset:any){
+    this.lineChart.data.labels = labels;
+    this.lineChart.data.datasets[0].data = dataset;
+    this.lineChart.update();
   }
 }

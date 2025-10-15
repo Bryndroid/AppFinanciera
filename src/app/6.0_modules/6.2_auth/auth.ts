@@ -103,4 +103,8 @@ export class Auth implements OnInit {
   boolean2() {
     this.hide2 = !this.hide2
   }
+
+  navegarLogin(){
+    this.route.navigateByUrl("/Inicio-sesion")
+  }
 }
